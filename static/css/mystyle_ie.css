@@ -1,0 +1,61 @@
+/*стили только для IE 10*/
+_:-ms-lang(x), .card-article {
+	display: table-cell;
+}
+_:-ms-lang(x), .articles-right .card-article {
+	display: flex;
+}
+_:-ms-lang(x), .share {
+	display: none;
+}
+
+_:-ms-lang(x), .custom-control-input {
+    position: static;
+    z-index: 1;
+    opacity: 1;
+}
+_:-ms-lang(x), .custom-control-label::before {
+	display: none;
+}
+_:-ms-lang(x), .custom-control-label::after {
+	display: none;
+}
+_:-ms-lang(x), .custom-control {
+	padding-left: 0;
+}
+_:-ms-lang(x), .card-img-overlay .card-text {
+	display: table !important;
+}
+
+/*стили только для IE 11*/
+_:-ms-fullscreen, :root .card-article {
+	display: block;
+}
+_:-ms-fullscreen, :root .share {
+	display: block;
+}
+_:-ms-fullscreen, :root .custom-control-input {
+    position: static;
+    z-index: 1;
+    opacity: 1;
+}
+_:-ms-fullscreen, :root .custom-control-label::before {
+	display: none;
+}
+_:-ms-fullscreen, :root .custom-control-label::after {
+	display: none;
+}
+_:-ms-fullscreen, :root .custom-control {
+	padding-left: 0;
+}
+
+/*стили для Edge*/
+@supports (-ms-ime-align:auto) {
+	
+}
+
+/*стили для IE 10 и IE 11*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	
+}
+

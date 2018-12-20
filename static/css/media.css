@@ -1,0 +1,291 @@
+@media (min-width: 576px) {
+  .container {
+    max-width: 700px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+	.container {
+		max-width: 1550px;
+	}
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+	.main-mobil .navbar-nav {
+	    background-color: #8395b9;
+	    padding: 1rem 2.2rem;
+	    position: relative;
+	}
+	.main-mobil .navbar-nav button.close {
+		position: absolute;
+		top: 10px;
+		right: 15px;
+	}
+	.main-mobil .navbar-nav .nav-link {
+		color: #fff;
+		padding: 0.5rem !important;
+		font-size: 0.875rem;
+	}
+	.main-mobil .nav-link.active {
+		font-weight: 600;
+	}
+	.main-mobil .navbar-nav .dropdown-menu {
+		background-color: #8395b9;
+		border: none;
+		color: #fff;
+		padding-top: 0;
+		padding-bottom: 0;
+		box-shadow: none;
+		font-size: 0.8rem;
+	}
+	.main-mobil .dropdown-item {
+		font-family: 'Avenir Next Cyr Light', sans-serif;
+		color: #fff;
+		white-space: normal;
+	}
+
+	.news-not-photo {
+		background-color: #f5f5f5;
+		border-radius: 0.2rem;
+	}
+	.news-not-photo {
+		font-size: 0.875rem;
+	}
+	.news-not-photo .btn-silver {
+		background-color: #eee;
+	}
+	.news-not-photo .btn-silver:hover, .news-not-photo .btn-silver:focus {
+		color: #000;
+		background-color: #ccc;
+	}
+
+	.news-not-photo .head-news {
+		font-size: 0.8rem;
+	}
+	.news-with-photo a {
+	    background-color: transparent;
+	    font-size: 0.8rem;
+	    padding: 1rem;
+	    margin-bottom: -1rem !important;
+	    line-height: 18px;
+	}
+	.card-img-overlay {
+		padding: 1rem;
+	}
+	.card-img-overlay span {
+		font-size: 0.8rem;
+	}
+	.section p {
+		font-size: 1rem;
+	}
+	.doc a {
+		font-size: 0.8rem;
+		line-height: 16px;
+	}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.header-logo .text-secondary {
+		font-size: 0.8rem;
+	}
+	.header-logo p.font-text-demi {
+		font-size: 0.875rem;
+	}
+	.header-info .container {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+	.main {
+		background-color: #8395b9;
+	}
+	.main .navbar-nav {
+	    background-color: #8395b9;
+	    padding: 1.5rem 3rem;
+	    position: relative;
+	}
+	.main .navbar-nav button.close {
+		position: absolute;
+		top: 10px;
+		right: 15px;
+	}
+	.main .navbar-nav .nav-link {
+		color: #fff;
+		margin-left: 1rem;
+	}
+	.main .nav-link.active {
+		font-weight: 600;
+	}
+	.navbar-toggler:hover, .navbar-toggler:focus {
+	    border: 2px solid #fff;
+	}
+	
+	.text-dopusk {
+		font-size: 0.6rem;
+	}
+	.text-head {
+		font-size: 0.8rem;
+	}
+	.block-right-down a {
+		font-size: 0.8rem;
+	}
+	.news-with-photo a {
+	    background-color: transparent;
+	    font-size: 0.8rem;
+	    padding: 1rem;
+	    margin-bottom: -1rem !important;
+	    line-height: 18px;
+	}
+	.news-not-photo p.font-text-demi {
+		font-size: 0.875rem;
+	}
+	.news-not-photo p.font-text-thin {
+		font-size: 0.8rem;
+	}
+	.news-not-photo .head-news {
+		font-size: 0.75rem;
+	}
+
+	.footer-info .text-size-20 {
+		font-size: 1rem;
+	}
+	.footer-info .footer-text {
+		font-size: 0.5rem;
+		line-height: 14px;
+	}
+	.mail-footer {
+		font-size: 0.875rem;
+	}
+
+	.dropdown-menu {
+	    padding: 0 0 0.5rem 0;
+	    margin: 0.125rem 0 0;
+	    font-size: 1rem;
+	    background-color: #8395b9;
+	    border: none;
+	}
+	.dropdown-item {
+		color: #fff;
+	}
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	/* .modal-header .close {
+	    margin: -3rem -3rem -1rem auto;
+	} */
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.header-info .container {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+	.main .navbar-nav {
+	    background-color: #8395b9;
+	    padding: 1.5rem 3rem;
+	    position: relative;
+	}
+	.main .navbar-nav button.close {
+		position: absolute;
+		top: 10px;
+		right: 15px;
+	}
+	.main .navbar-nav .nav-link {
+		color: #fff;
+		margin-left: 1rem;
+	}
+	.main .nav-link.active {
+		font-weight: 600;
+	}
+	.navbar-toggler:hover, .navbar-toggler:focus {
+	    border: 2px solid #fff;
+	}
+	.news-with-photo a {
+		font-size: 0.875rem;
+		padding: 0.6rem 0.8rem;
+	}
+	.text-dopusk {
+		font-size: 0.7rem;
+	}
+	.text-head {
+		font-size: 0.875rem;
+	}
+	.block-right-down a {
+		font-size: 1rem;
+	}
+	.dropdown-menu {
+	    padding: 0 0 0.5rem 0;
+	    margin: 0.125rem 0 0;
+	    font-size: 1rem;
+	    background-color: #8395b9;
+	    border: none;
+	}
+	.dropdown-item {
+		color: #fff;
+	}
+
+}
+
+@media (max-width: 991px) {
+	.main {
+		background-color: #8395b9;
+	}
+	.footer-info .footer-text {
+		font-size: 0.7rem;
+	}
+	.modal-header .close {
+	    position: absolute;
+	    right: 0;
+
+	}
+
+	
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.img-overlay .btn-danger {
+		font-size: 0.875rem;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.header-info .container {
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+	.text-dopusk {
+		font-size: 0.7rem;
+	}
+	.text-head {
+		font-size: 0.875rem;
+	}
+	.block-right-down a {
+		font-size: 0.875rem;
+	}
+	.news-right-block .card-text {
+		font-size: 0.875rem;
+		padding: 0.875rem 1rem;
+	    margin-left: -1.2rem;
+	}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1400px) {
+	.link-journal {
+		font-size: 1.3rem;
+	}
+}
+
+
