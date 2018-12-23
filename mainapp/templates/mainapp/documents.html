@@ -1,0 +1,200 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content  %}
+<div class="container mb-5">
+
+        <div class="row">
+
+            <div class="col-xl-9">
+                <div class="d-none d-sm-block">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-sm-3 col-lg-2">
+                            <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                        </div>
+                        <div class="col-sm-9 col-lg-10">
+                            <p class="mb-2">Документы</p>
+                            <hr class="line-breadcrumb">
+                        </div>
+                    </div>
+                </div>
+                <h4 class="mb-4">Документы</h4>
+
+                <form class="search-docs border-top border-bottom py-4 py-sm-5 mb-4">
+                    <div class="form-row mb-4">
+                        <div class="col-sm-6 col-xl-4 mb-4 mb-sm-0">
+                            <label for="">Поиск по названию</label>
+                            <input type="text" class="form-control" id="">
+                        </div>
+                        <div class="col-sm-6 col-xl-4">
+                            <label for="inputState">Вид документа</label>
+                            <select id="inputState" class="form-control">
+                                <option>все документы</option>
+                                <option>Заявки</option>
+                                <option>Соглашения</option>
+                                <option>Нормативные документы</option>
+                                <option selected>Руководящие документы</option>
+                                <option>Методические документы</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-blue px-4">Найти</button>
+                    <a href="#" class="btn btn-link btn-sm text-secondary" role="button">Сбросить</a>
+                </form>
+
+                <nav class="mb-4" aria-label="Page navigation example">
+                    <ul class="pagination pagination-sm justify-content-center justify-content-sm-end">
+                        <li class="page-item disabled px-1">
+                            <a class="page-link page-link-prev" href="#" tabindex="-1"><i class="icon-left-open-mini"></i></a>
+                        </li>
+                        <li class="page-item active px-1"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item px-1"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item px-1"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item px-1">
+                            <a class="page-link page-link-next " href="#"><i class="icon-right-open-mini"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="doc-info border-bottom p-4 p-xl-5 mb-4">
+                    <div class="row">
+                        <div class="col-sm-1 align-self-center d-none d-sm-block">
+                            <img src="{% static 'images/icon-pdf.png' %}" class="d-inline-block" alt="Иконка .pdf">
+                        </div>
+                        <div class="col-sm-8 align-self-center">
+                            <p class="text-size-14 mb-sm-0">Рекомендации по применению РД 03-615–03 (Порядок применения сварочных технологий при изготовлении, монтаже, ремонте и реконструкции технических устройств для опасных производственных объектов)</p>
+                        </div>
+
+                        <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотреть</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-info border-bottom p-4 p-sm-5 mb-4">
+                    <div class="row">
+                        <div class="col-sm-1 align-self-center d-none d-sm-block">
+                            <img src="{% static 'images/icon-pdf.png' %}" class="d-inline-block" alt="Иконка .pdf">
+                        </div>
+                        <div class="col-sm-8 align-self-center">
+                            <p class="text-size-14 mb-sm-0">Протокол совещания по организации аттестации сварочного производства на инвестиционных объектах, реализуемых ПАО "Газпром"</p>
+                        </div>
+
+                        <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотреть</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-info border-bottom p-4 p-sm-5 mb-4">
+                    <div class="row">
+                        <div class="col-sm-1 align-self-center d-none d-sm-block">
+                            <img src="static/images/icon-pdf.png" class="d-inline-block" alt="Иконка .pdf">
+                        </div>
+                        <div class="col-sm-8 align-self-center">
+                            <p class="text-size-14 mb-sm-0">Письмо ОАО "Газпром" №03/0800/1-7147 от 27.12.2011г. "По вопросам совершенствования аттестационной деятельности на объектах ОАО "Газпром"</p>
+                        </div>
+
+                        <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотреть</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-info border-bottom p-4 p-sm-5 mb-4">
+                    <div class="row">
+                        <div class="col-sm-1 align-self-center d-none d-sm-block">
+                            <img src="static/images/icon-pdf.png" class="d-inline-block" alt="Иконка .pdf">
+                        </div>
+                        <div class="col-sm-8 align-self-center">
+                            <p class="text-size-14 mb-sm-0">Рекомендации по применению РД 03-615–03 (Порядок применения сварочных технологий при изготовлении, монтаже, ремонте и реконструкции технических устройств для опасных производственных объектов)</p>
+                        </div>
+
+                        <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотреть</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="doc-info border-bottom p-4 p-sm-5 mb-4">
+                    <div class="row">
+                        <div class="col-sm-1 align-self-center d-none d-sm-block">
+                            <img src="static/images/icon-pdf.png" class="d-inline-block" alt="Иконка .pdf">
+                        </div>
+                        <div class="col-sm-8 align-self-center">
+                            <p class="text-size-14 mb-sm-0">Письмо ОАО "Газпром" №03/0800/1-7147 от 27.12.2011г. "По вопросам совершенствования аттестационной деятельности на объектах ОАО "Газпром"</p>
+                        </div>
+
+                        <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотреть</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="mb-4" aria-label="Page navigation example">
+                    <ul class="pagination pagination-sm justify-content-center justify-content-sm-end">
+                        <li class="page-item disabled px-1">
+                            <a class="page-link page-link-prev" href="#" tabindex="-1"><i class="icon-left-open-mini"></i></a>
+                        </li>
+                        <li class="page-item active px-1"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item px-1"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item px-1"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item px-1">
+                            <a class="page-link page-link-next " href="#"><i class="icon-right-open-mini"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="d-none d-lg-block">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-sm-3 col-lg-2">
+                            <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                        </div>
+                        <div class="col-sm-9 col-lg-10">
+                            <p class="mb-2">Документы</p>
+                            <hr class="line-breadcrumb">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-block d-lg-none">
+            <a href="index.html" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
+        </div>      
+
+    </div>
+{% endblock  %}

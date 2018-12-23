@@ -208,24 +208,24 @@ def validate_form(request):
 
 def contact(request):
     '''view to contact page - forms will redirect here in future'''
-    if request.method == 'POST':
-        print(request.POST)
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        context = {
-            'name': name,
-            'phone': phone
-        }
-    else:
-        context = {
-            'title': 'Контакты'
-        }
+    # if request.method == 'POST':
+    #     print(request.POST)
+    #     name = request.POST.get('name')
+    #     phone = request.POST.get('phone')
+    #     context = {
+    #         'name': name,
+    #         'phone': phone
+    #     }
+    # else:
+    #     context = {
+    #         'title': 'Контакты'
+    #     }
 
-    contacts = Contact.objects.all().order_by('number')
+    # contacts = Contact.objects.all().order_by('number')
 
-    context['contacts'] = contacts
+    # context['contacts'] = contacts
 
-    return render(request, 'mainapp/contact.html', context)
+    return render(request, 'mainapp/contact.html', context=None)
 
 
 def messages(request):

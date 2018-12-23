@@ -1,0 +1,78 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content  %}
+<div class="container mb-5">
+        <div class="d-none d-sm-block">
+            <div class="row align-items-center mb-5">
+                <div class="col-sm-3 col-lg-2">
+                    <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                </div>
+                <div class="col-sm-9 col-lg-10">
+                    <p class="mb-2">Услуги</p>
+                    <hr class="line-breadcrumb">
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-7">
+                <h4 class="mb-4">Аттестация сварщиков</h4>
+                <h5 class="text-secondary font-text-thin mb-4">Процедура аттестации сварщиков</h5>
+
+                <p class="mb-4">Аттестация сварщиков проводится в соответствии с требованиями <a href="#" target="_blank">ПБ-03-273-99</a> и <a href="#" target="_blank">РД 03-495-02</a> в целях установления достаточности теоретической и практической подготовки; проверки знаний и навыков; предоставления права сварщикам выполнять работы на объектах, подконтрольных Ростехнадзору.</p>
+                <p class="mb-4">Аттестация сварщиков (согласно <a href="#" target="_blank">ПБ 03-273-99</a> и <a href="#" target="_blank">РД 03-495-02</a>) включает в себя сдачу аттестуемым сварщиком общего, специального и практического экзаменов.</p>
+                <p class="mb-4">Экзамен на знание Правил безопасности Ростехнадзора России в соответствии с направлением деятельности аттестуемого специалиста сдаётся заранее в органах РТН и аттестуемый специалист предоставляет протокол аттестации в ООО Аттестационный Центр "НАКС-Хабаровск".</p>
+                <p class="mb-4">ООО Аттестационный Центр "НАКС-Хабаровск" (№ТОР-5АЦ в реестре НАКС) проводит работу  по подготовке и аттестации сварщиков I уровня на все объекты и опасные технические устройства, подконтрольные Ростехнадзору, а также строительные объекты, все способы сварки, включая наплавку, пайку и термическую резку.</p>
+                <p class="mb-4">Сварщики, успешно прошедшие аттестацию, получают квалификационное Удостоверение, установленного образца, которое регистрируются в системе аттестации сварщиков НАКС.</p>
+                <p class="mb-4">Аттестацию сварщиков начинают с практического экзамена, далее - общий экзамен по теоретическим основам сварки, специальный - по направлению производственной работы сварщика и в соответствии со способом, по которому он аттестуется. Перед общим и специальным экзаменами проводятся консультационные занятия.</p>
+                <hr class="mb-lg-5">
+                <div class="d-none d-lg-block">
+                    <div class="row align-items-center mb-5">
+                        <div class="col-sm-3">
+                            <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="mb-2">Услуги</p>
+                            <hr class="line-breadcrumb">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="box-blue p-4 mb-4">
+                    <h5 class="mb-4">Документы, необходимые для подачи заявки на аттестацию сварщиков</h5>
+                    <h5 class="text-secondary font-text-thin mb-4">Для аттестации сварщиков необходимо представить следующие документы:</h5>
+                    <ol class="pl-1">
+                        <li class="mb-3"><span class="font-text-bold mr-2">1.</span>Аттестационная заявка на фирменном бланке предприятия, заверенная подписью руководителя или на простом бланке заверенная подписью руководителя и печатью.</li>
+                        <li class="mb-3"><span class="font-text-bold mr-2">2.</span>Копия Диплома о профильном образовании.</li>
+                        <li class="mb-3"><span class="font-text-bold mr-2">3.</span>Копия трудовой книжки или справка с места работы «Об общем стаже работы в области сварки» (заверенная отделом кадров). </li>
+                        <li class="mb-3"><span class="font-text-bold mr-2">4.</span>Копия медицинской комиссии на профпригодность (для сварщика), копия Протокола Промбезопасности (для специалистов II-IV уровней).</li>
+                        <li class="mb-3"><span class="font-text-bold mr-2">5.</span>Копию аттестационного удостоверения или Протокола НАКС при периодической или дополнительной аттестации.</li>
+                        <li class="mb-3"><span class="font-text-bold mr-2">6.</span>Согласие на обработку персональных данных (во вложении бланк).</li>
+                        <li class="mb-4"><span class="font-text-bold mr-2">7.</span>Фото (цветное) 3х4, две штуки.</li>
+                    </ol>
+
+                    <a href="#" class="btn btn-blue" data-toggle="modal" data-target="#modal-statement">Подать заявку</a>
+                </div>
+                <div class="box-gray p-4 mb-4">
+                    <h5 class="mb-4">Правила аттестации</h5>
+                    <p class="text-secondary text-size-14 mb-3">Сварщики</p>
+                    <ul class="pl-2 pl-lg-3 ml-2 ml-lg-0 mb-0">
+                        <li><a href="#" target="_blank">ПБ 03-273-99</a></li>
+                        <li><a href="#" target="_blank">РД 03-495-02</a></li>
+                    </ul>
+                </div>
+                <div class="box-gray p-4 mb-4">
+                    <h5 class="mb-4">Документы</h5>
+                    <p class="text-secondary text-size-14 mb-3">Типовая форма заявки на аттестацию сварщика</p>
+                    <p class="mb-1"><a href="#" target="_blank">Форма заявки</a></p>
+                    <p class="mb-1"><a href="#" target="_blank">Перечень групп ОТУ</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="d-block d-lg-none">
+            <a href="index.html" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
+        </div>      
+
+    </div>
+{% endblock  %}

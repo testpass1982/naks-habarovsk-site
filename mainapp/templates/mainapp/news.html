@@ -1,0 +1,253 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content  %}
+
+
+    <div class="container mb-5">
+        <div class="d-none d-sm-block">
+            <div class="row align-items-center mb-5">
+                <div class="col-sm-3 col-lg-2">
+                    <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                </div>
+                <div class="col-sm-9 col-lg-10">
+                    <p class="mb-2">Новости</p>
+                    <hr class="line-breadcrumb">
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-lg-7">
+                <div class="news-left-block p-0 p-lg-4 mb-4 mb-lg-0">
+                    <!-- Header news -->
+                    <div class="row align-items-center justify-content-between mb-4">
+                        <div class="col-sm-5">
+                            <div class="date-news text-secondary mb-3 mb-sm-0"><span class="mr-2">05 Июля 2018</span>|<span class="ml-2">Новости НАКС</span></div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="float-sm-right">
+                                <div class="icon-news p-1 p-sm-2 mr-1 mr-xl-4">
+                                    <a href="#" target="_blank" class="mx-1 mx-xl-2"><img src="static/images/icon-facebook.png" alt="facebook" class="img-fluid"></a>
+                                    <a href="#" target="_blank" class="mx-1 mx-xl-2"><img src="static/images/icon-vk.png" alt="vk" class="img-fluid"></a>
+                                    <a href="#" target="_blank" class="mx-1 mx-xl-2"><img src="static/images/icon-twitter.png" alt="twitter" class="img-fluid"></a>
+                                    <a href="#" target="_blank" class="mx-1 mx-xl-2"><img src="static/images/icon-google.png" alt="google" class="img-fluid"></a>
+                                </div>
+                                <div class="icon-news p-1 p-sm-2 mr-1 mr-sm-2">
+                                    <div class="dropdown">
+                                        <a href="#" target="_blank" class="dropdown-toggle mx-1 mx-xl-2" id="" data-toggle="dropdown" aria-haspopup="true"><img src="static/images/icon-email.png" alt="email" class="img-fluid"></a>
+
+                                        <form class="dropdown-menu dropdown-menu-right p-4">
+                                            <p class="text-size-14 text-white mb-1">Отправить новость по почте</p> 
+                                            <div class="input-group">
+                                                <input type="text" class="form-control form-control-sm" placeholder="Введите почту" aria-label="" aria-describedby="">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-sm btn-dark-blue" type="submit" id="">Отправить</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="icon-news p-1 p-sm-2">
+                                    <a href="#" target="_blank" class="mx-1 mx-xl-2"><img src="static/images/icon-print.png" alt="print" class="img-fluid"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Header news -->
+
+                    <h4 class="font-text-regular mb-4">Независимая оценка квалификации и государственная итоговая аттестация выпускников. Реализация пилотного проекта. Белгородская область</h4>
+
+                    <p class="text-primary mb-3">Фотографии по теме</p>
+
+                    <div class="box-slider-img mb-4">
+                        <div id="slider-photo" class="owl-theme owl-carousel">
+                            <div><img src="static/images/photo-news-01.png" alt="" class="img-fluid"></div>
+                            <div><img src="static/images/photo-news-02.png" alt="" class="img-fluid"></div>
+                            <div><img src="static/images/photo-news-03.png" alt="" class="img-fluid"></div>
+                            <div><img src="static/images/photo-news-02.png" alt="" class="img-fluid"></div>
+                            <div><img src="static/images/photo-news-03.png" alt="" class="img-fluid"></div>
+                            <div><img src="static/images/photo-news-01.png" alt="" class="img-fluid"></div>
+                        </div>
+                    </div>
+
+                    <p class="text-size-14 mb-3 mb-sm-4">Центр оценки квалификаций ООО «НАКС-Белгород» и Региональное агентство развития квалификаций Белгородской области осуществляли координацию деятельности региональных участников данного проекта. Экспертами регионального центра оценки квалификаций (далее ЦОК) и членами государственных экзаменационных комиссий 21, 22, 25, 27 и 28 июня 2018 года проведена независимая оценка квалификации, совмещенная с государственной итоговой аттестацией обучающихся. В ходе данной процедуры определялось соответствие уровня подготовки выпускников программ СПО «Сварщик (электросварочные и газосварочные работы)» и «Сварщик (ручной и частично механизированной сварки (наплавки)» требованиям профессионального стандарта «Сварщик».</p>
+                    <p class="font-text-medium mb-3 mb-sm-4">Оценочные процедуры проводились на площадке экзаменационного центра регионального ЦОК ООО «НАКС-Белгород» и включали в себя два этапа: </p>
+                    <p class="text-size-14 mb-3 mb-sm-4">– теоретический этап предусматривал тестирование в письменной форме, его продолжительность составила 60 минут;<br>– практический этап экзамена предусматривал выполнение выпускниками заданий для определения 2 уровня по квалификациям «Сварщик дуговой сварки плавящимся покрытым электродом» и «Сварщик дуговой сварки плавящимся электродом в защитном газе». Практические задания студентам необходимо было выполнить в модельных, а затем в реальных условиях. Задания в реальных условиях включали выполнение сборки и сварки в нижнем и вертикальном пространственных положениях простой неответственной конструкции, последующую обработку сварных швов и визуально-измерительный контроль готового изделия; продолжительность практического этапа составила 180 минут. Студенты использовали комплекты оценочных средств с индивидуальным кодом. Каждый комплект оценочных средств содержал тестовые задания трех видов, задания для выполнения практической части экзамена в модельных условиях и технологическую карту для выполнения практической части экзамена в реальных условиях.</p>
+                    <p class="text-size-14 mb-3 mb-sm-4">В состав экспертной комиссии по независимой оценке квалификации входили специалисты ЦОК ООО «НАКС-Белгород» – Вялых Александр Сергеевич, Шумаков Артём Александрович, Белявцева Надежда Тихоновна, Андреев Денис Алексеевич, Резникова Алёна Викторовна. В составы государственных экзаменационных комиссий совместно с представленными экспертами ЦОК входили представители образовательных организаций, участвующих в пилотном проекте. Таким образом, была совмещена работа двух видов комиссий, данный процесс отражен в соответствующих протоколах. Результаты независимой оценки квалификации студентов зачтены в качестве выпускной практической квалификационной работы, оцениваемой в процессе государственной итоговой аттестации обучающихся по профессиям «Сварщик (электросварочные и газосварочные работы)» и «Сварщик (ручной и частично механизированной сварки (наплавки)» в виде демонстрационного экзамена.</p>
+                    <p class="text-size-14 mb-3 mb-sm-4">В профессиональном экзамене участвовали 50 выпускников-сварщиков девяти профессиональных образовательных организаций региона – ОГАПОУ «Губкинский политехнический колледж», ОГАПОУ «Белгородский машиностроительный техникум», ОГАПОУ «Белгородский политехнический колледж», ОГАПОУ «Старооскольский индустриально-технологический техникум», ОГАПОУ «Старооскольский агротехнологический техникум», ОГАПОУ «Шебекинский техникум промышленности и транспорта», ОГАПОУ «Чернянский агромеханический техникум», ОГАПОУ «Борисовский агромеханический техникум», ОГАПОУ «Алексеевский агротехнический техникум». По итогам экзамена свою квалификацию подтвердили 38 выпускников, что составило 80,95% от числа всех участников независимой оценки квалификаций.</p>
+                    <p class="text-size-14 mb-3 mb-sm-4">В соответствии с постановлением Правительства РФ от 16 июня 2016 года № 1204, утверждающим Правила проведения Центром оценки квалификаций независимой оценки квалификации, Совет по профессиональным квалификациям в области сварки принял решение о выдаче центром свидетельств  о квалификации, заключений о прохождении профессионального экзамена обучающимися Белгородской области.</p>
+                    <p class="text-size-14 mb-3 mb-sm-4">Апробация в рамках пилотного проекта совмещения независимой оценки квалификации и государственной итоговой аттестации позволит выпускникам, успешно завершившим обучение по профессиям «Сварщик (электросварочные и газосварочные работы)» и «Сварщик (ручной и частично механизированной сварки (наплавки)», получить не только диплом 
+                    о среднем профессиональном образовании, но и свидетельство о квалификации федерального уровня. Рынок труда получит квалифицированных рабочих с подтвержденным работодателями уровнем квалификации. Информация о свидетельствах размещена в федеральном Реестре сведений о проведении независимой оценки квалификации.</p>
+
+                    <hr class="mb-4">
+
+                    <div class="row align-items-center">
+                        <div class="col-sm">
+                            <a href="#" class="btn btn-outline-gray btn-sm mb-3 mb-sm-0"><span class="mr-2 text-primary">Соглашение</span>|<img src="static/images/icon-download.png" alt="" class="img-fluid ml-2"></a>
+                        </div>
+                        <div class="col-sm text-sm-right">
+                            <a href="#" class="link-next-news text-size-14">Следующая новость &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="news-right-block">
+                    <h5 class="mb-4">Недавние новости</h5>
+                    <div class="card news-with-photo border-0 mb-4">
+                        <img class="card-img" src="static/images/img-news1.png" alt="News photo">
+                        <div class="card-img-overlay d-flex align-items-start">
+                            <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>10 Июля</strong><br>2018</span>
+                            <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                        </div>
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <a href="#" class="card-text">Соглашение о сотрудничестве между СРО НП "НАКС" и CNPC INTERNATIONAL WELDING TRAINING CENTER</a>
+                        </div>
+                    </div>
+                    <div class="card news-with-photo border-0 mb-4">
+                        <img class="card-img" src="static/images/img-news2.png" alt="News photo">
+                        <div class="card-img-overlay d-flex align-items-start">
+                            <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>04 Июля</strong><br>2018</span>                             
+                            <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                        </div>
+
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <a href="#" class="card-text">Руководство НАКС в Рязани</a>
+                        </div>
+                    </div>
+                    <div class="card news-with-photo border-0 mb-4 mb-sm-5 mb-xl-4">
+                        <img class="card-img" src="static/images/img-news3.png" alt="News photo">
+                        <div class="card-img-overlay d-flex align-items-start">
+                            <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>05 Июля</strong><br>2018</span>
+                            <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                        </div>
+
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <a href="#" class="card-text">Независимая оценка квалификации и государственная итоговая аттестация выпускников. Реализация пилотного проекта</a>
+                        </div>
+                    </div>
+                    <div class="card news-with-photo border-0 mb-4">
+                        <img class="card-img" src="static/images/img-news1.png" alt="News photo">
+                        <div class="card-img-overlay d-flex align-items-start">
+                            <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>10 Июля</strong><br>2018</span>
+                            <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                        </div>
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <a href="#" class="card-text">Соглашение о сотрудничестве между СРО НП "НАКС" и CNPC INTERNATIONAL WELDING TRAINING CENTER</a>
+                        </div>
+                    </div>
+                    <div class="card news-with-photo border-0 mb-4">
+                        <img class="card-img" src="static/images/img-news2.png" alt="News photo">
+                        <div class="card-img-overlay d-flex align-items-start">
+                            <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>04 Июля</strong><br>2018</span>                             
+                            <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                        </div>
+
+                        <div class="card-img-overlay d-flex align-items-end">
+                            <a href="#" class="card-text">Руководство НАКС в Рязани</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="link-next-news text-size-14">Еще новости</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-5">
+            <div class="box-slider-text mb-4">
+                <div id="slider-text" class="owl-theme owl-carousel">
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="text-primary text-size-12">Новости НАКС</div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="text-secondary text-size-12">12 Июля 2018</div>
+                            </div>
+                        </div>
+                        <p class="text-size-14 mb-3">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                        <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="mr-2">Соглашение</a>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="text-primary text-size-12">Новости НАКС</div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="text-secondary text-size-12">12 Июля 2018</div>
+                            </div>
+                        </div>
+                        <p class="text-size-14 mb-3">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                        <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="mr-2">Соглашение</a>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="text-primary text-size-12">Новости НАКС</div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="text-secondary text-size-12">12 Июля 2018</div>
+                            </div>
+                        </div>
+                        <p class="text-size-14 mb-3">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                        <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="mr-2">Соглашение</a>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="text-primary text-size-12">Новости НАКС</div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="text-secondary text-size-12">12 Июля 2018</div>
+                            </div>
+                        </div>
+                        <p class="text-size-14 mb-3">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                        <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="mr-2">Соглашение</a>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="text-primary text-size-12">Новости НАКС</div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="text-secondary text-size-12">12 Июля 2018</div>
+                            </div>
+                        </div>
+                        <p class="text-size-14 mb-3">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                        <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="mr-2">Соглашение</a>
+                    </div>
+                    <div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="text-primary text-size-12">Новости НАКС</div>
+                            </div>
+                            <div class="col text-right">
+                                <div class="text-secondary text-size-12">12 Июля 2018</div>
+                            </div>
+                        </div>
+                        <p class="text-size-14 mb-3">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                        <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="mr-2">Соглашение</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="d-none d-sm-block">
+            <div class="row align-items-center mb-5">
+                <div class="col-sm-3 col-lg-2">
+                    <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">← На главную</a>
+                </div>
+                <div class="col-sm-9 col-lg-10">
+                    <p class="mb-2">Новости</p>
+                    <hr class="line-breadcrumb">
+                </div>
+            </div>
+        </div>
+
+        <div class="d-block d-sm-none">
+            <a href="index.html" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
+        </div>      
+
+    </div>
+{% endblock  %}
