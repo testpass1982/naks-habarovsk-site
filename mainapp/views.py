@@ -1,21 +1,19 @@
+import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, JsonResponse, HttpResponseRedirect
 from django.core.exceptions import ValidationError
-from django.contrib import messages
+# from django.contrib import messages
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post, PostPhoto, Tag, Category, Document, Article, Message, Contact
-from .models import Staff, Registry
+from .models import Registry
+from .models import Staff
 from .forms import PostForm, ArticleForm, DocumentForm
-from .forms import SendMessageForm, SubscribeForm, AskQuestionForm, SearchRegistryForm
-from django.contrib.auth.decorators import login_required
+from .forms import SendMessageForm, SubscribeForm, AskQuestionForm, DocumentSearchForm, SearchRegistryForm
 from .adapters import MessageModelAdapter
 from .message_tracker import MessageTracker
-from .registry_import import Importer, data_url
-import json
 from .utilites import UrlMaker
-from django.db.models import Q
-
+from .registry_import import Importer, data_url
 # Create your views here.
 
 
@@ -46,26 +44,26 @@ def index(request):
         else:
             raise ValidationError('form not valid')
 
-    docs = Document.objects.filter(
-        publish_on_main_page=True).order_by('-created_date')[:3]
-
     main_page_news = Post.objects.filter(
-        publish_on_main_page=True).order_by('-published_date')[:3]
+        publish_on_main_page=True).order_by('-published_date')[:2]
 
+    # main_page_secondery_news = Post.objects.filter(
+    #     secondery_main=True).order_by('-published_date')[:4]
     posts = {}
     for post in main_page_news:
         posts[post] = PostPhoto.objects.filter(post__pk=post.pk).first()
+    print(posts)
 
     main_page_articles = Article.objects.filter(
         publish_on_main_page=True).order_by('-published_date')[:3]
 
-    print(request.resolver_match)
-    print(request.resolver_match.url_name)
+    # print(request.resolver_match)
+    # print(request.resolver_match.url_name)
 
     content = {
         'title': title,
         'posts': posts,
-        'docs': docs,
+        # 'secondery_news': main_page_secondery_news,
         'articles': main_page_articles,
         'send_message_form': SendMessageForm(),
         'subscribe_form': SubscribeForm(),
@@ -81,6 +79,7 @@ def news(request):
     all_news = Post.objects.all().filter(
         publish_on_news_page=True).order_by('-created_date')
     all_documents = Document.objects.all().order_by('-created_date')[:5]
+    side_articles = Article.objects.all().order_by('-created_date')[:3]
     post_list = [dict({'post': post, 'picture': PostPhoto.objects.filter(
         post__pk=post.pk).first()}) for post in all_news]
     # показываем несколько новостей на странице
@@ -97,7 +96,9 @@ def news(request):
         'title': title,
         'news': posts,
         'documents': all_documents,
+        'side_related': side_articles,
         'bottom_related': articles
+
     }
 
     return render(request, 'mainapp/news.html', content)
@@ -105,6 +106,8 @@ def news(request):
 
 def details(request, pk=None, content=None):
 
+    print(request.resolver_match)
+    print(request.resolver_match.url_name)
     return_link = HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
     if request.GET:
@@ -121,13 +124,19 @@ def details(request, pk=None, content=None):
     if content == 'post':
         attached_images = PostPhoto.objects.filter(post__pk=pk)
         attached_documents = Document.objects.filter(post__pk=pk)
+        side_related = Post.objects.all().exclude(
+            id=pk).order_by('-created_date')[:2]
+        side_related_posts = [dict({'post': post, 'picture': PostPhoto.objects.filter(
+            post__pk=post.pk).first()}) for post in side_related]
         post_content = {
             'post': obj,
             'images': attached_images,
             'documents': attached_documents,
+            'side_related_posts': side_related_posts,
             'bottom_related': Article.objects.all().order_by(
                 '-created_date')[:3]
         }
+        print('SIDE_RELATED', post_content['side_related_posts'])
     if content == 'article':
         tags_pk_list = [tag.pk for tag in obj.tags.all()]
         related_articles = Article.objects.filter(
@@ -145,10 +154,9 @@ def details(request, pk=None, content=None):
     print(request.resolver_match)
     print(request.resolver_match.url_name)
 
-    return render(request, 'mainapp/page_details.html', context)
+    return render(request, 'mainapp/details.html', context)
 
 
-@login_required
 def create_factory(request, content_type):
 
     form_name_select = {
@@ -208,24 +216,24 @@ def validate_form(request):
 
 def contact(request):
     '''view to contact page - forms will redirect here in future'''
-    # if request.method == 'POST':
-    #     print(request.POST)
-    #     name = request.POST.get('name')
-    #     phone = request.POST.get('phone')
-    #     context = {
-    #         'name': name,
-    #         'phone': phone
-    #     }
-    # else:
-    #     context = {
-    #         'title': 'Контакты'
-    #     }
+    if request.method == 'POST':
+        print(request.POST)
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        context = {
+            'name': name,
+            'phone': phone
+        }
+    else:
+        context = {
+            'title': 'Контакты'
+        }
 
-    # contacts = Contact.objects.all().order_by('number')
+    contacts = Contact.objects.all().order_by('number')
 
-    # context['contacts'] = contacts
+    context['contacts'] = contacts
 
-    return render(request, 'mainapp/contact.html', context=None)
+    return render(request, 'mainapp/contact.html', context)
 
 
 def messages(request):
@@ -243,26 +251,46 @@ def messages(request):
 def documents(request):
     """view for documents page"""
 
-    doctypes = ['Аккредитация САСв', 'Допуск ЦОК', 'Оценочное средство']
+    # doctypes = ['Аккредитация САСв', 'Допуск ЦОК', 'Оценочное средство']
 
-    tags = Tag.objects.all().filter(name__in=doctypes)
-
+    # tags = Tag.objects.all().filter(name__in=doctypes)
+    search_form = DocumentSearchForm()
+    if request.method == 'GET':
+        search_result_content = {}
+        if 'search_document' in request.GET:
+            print('REQUEST_GET', request.GET)
+            search_form = DocumentSearchForm(request.GET)
+            if search_form.is_valid():
+                search_result = Document.objects.filter(
+                    title__contains=request.GET.get('document_name')).order_by('-created_date')
+                print('SEARCH_RESULT', search_result)
+                search_result_content['search_result'] = search_result
     accreditation_list = Document.objects.filter(
         tags__in=Tag.objects.filter(name='Аккредитация САСв'))
     cok_accreditation_list = Document.objects.filter(
         tags__in=Tag.objects.filter(name='Допуск ЦОК'))
     os_doc_list = Document.objects.filter(
         tags__in=Tag.objects.filter(name='Оценочное средство'))
-    print(accreditation_list)
-    print(cok_accreditation_list)
-    print(os_doc_list)
+    norm_doc_list = Document.objects.filter(
+        tags__in=Tag.objects.filter(name='Нормативный документ'))
+    sogl_doc_list = Document.objects.filter(
+        tags__in=Tag.objects.filter(name='Соглашение'))
+    # print(accreditation_list)
+    # print(cok_accreditation_list)
+    # print(os_doc_list)
 
     content = {
         'title': 'Документы',
         'accreditation_list': accreditation_list,
         'cok_accreditation_list': cok_accreditation_list,
-        'os_doc_list': os_doc_list
+        'os_doc_list': os_doc_list,
+        'norm_doc_list': norm_doc_list,
+        'sogl_doc_list': sogl_doc_list,
+        'search_form': search_form
     }
+    if search_result_content:
+        content.update(search_result_content)
+        print('CONTENT WITH SEARCH', content)
     return render(request, 'mainapp/documents.html', content)
 
 
@@ -291,7 +319,7 @@ def staff(request):
     return render(request, 'mainapp/staff.html', content)
 
 
-def reestrsp(request, param=None):
+def reestrsp(request, type=None):
     """registry view for imported database entries"""
     search_form = SearchRegistryForm()
     if 'search' in request.GET:
@@ -309,7 +337,7 @@ def reestrsp(request, param=None):
         result_to_page.append(json.loads(result.params))
 
     list_of_records = result_to_page
-    
+
     """import data from data-url using token"""
     if request.GET.get('import'):
         accept = request.GET.get('import')
@@ -340,4 +368,4 @@ def reestrsp(request, param=None):
         print('empty')
         content = None
 
-    return render(request, 'mainapp/reestr-sasv.html', content)
+    return render(request, 'mainapp/reestr.html', content)

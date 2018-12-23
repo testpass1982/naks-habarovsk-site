@@ -1,0 +1,172 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mb-5" id="page-top">
+    <div class="d-none d-sm-block">
+        <div class="row align-items-center mb-5">
+            <div class="col-sm-3 col-lg-2">
+                <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+            </div>
+            <div class="col-sm-9 col-lg-10">
+                <p class="mb-2">{{ post.short_description }}</p>
+                <hr class="line-breadcrumb">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="row mb-4">
+                <div class="col-sm">
+                    <h4 class="mb-4">{{ post.title }}</h4>
+                </div>
+                <div class="col-sm">
+                    <div class="box-dark-blue text-white p-4">
+                        <p class="font-text-thin text-size-14 text-uppercase mb-2">ООО "НАКС-Хабаровск</p>
+                        <p class="font-text-medium text-size-14">Организация является членом Саморегулируемая
+                            организация Ассоциация «НАКС»</p>
+                    </div>
+                </div>
+            </div>
+
+           {{ post.text|safe }}
+
+            <hr>
+
+            <h5 class="mb-4">Лицензии и сертификаты ООО "НАКС-Хабаровск"</h5>
+            <div class="row mb-0 mb-sm-4">
+                <div class="col-sm-4">
+                    <div class="mb-3 mb-sm-0">
+                        <div class="image-container mb-2 mb-sm-3">
+                            <img src="{% static 'images/img-att-01.png' %}" alt="attestat" class="">
+                            <a href="#" class="bg-img-plus text-center"><span>+</span></a>
+                        </div>
+                        <p class="text-size-12 mb-0">Аттестат соответствия ООО "НАКС-Хабаровск" требованиям РД
+                            03-614-03</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3 mb-sm-0">
+                        <div class="image-container mb-2 mb-sm-3">
+                            <img src="{% static 'images/img-att-02.png' %}" alt="attestat" class="">
+                            <a href="#" class="bg-img-plus text-center"><span>+</span></a>
+                        </div>
+                        <p class="text-size-12 mb-0">Аттестат соответствия ООО "НАКС-Хабаровск" требованиям РД
+                            03-615-03</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3 mb-sm-0">
+                        <div class="image-container mb-2 mb-sm-3">
+                            <img src="{% static 'images/img-att-03.png' %}" alt="attestat" class="">
+                            <a href="#" class="bg-img-plus text-center"><span>+</span></a>
+                        </div>
+                        <p class="text-size-12 mb-0">Аттестат соответствия ООО "НАКС-Хабаровск" АС-САСв-133</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="d-none d-sm-block mb-4">
+            <div class="row mb-4">
+                <div class="col-sm-4">
+                    <div class="mb-3 mb-sm-0">
+                        <div class="image-container mb-2 mb-sm-3">
+                            <img src="{% static 'images/img-att-04.png' %}" alt="attestat" class="">
+                            <a href="#" class="bg-img-plus text-center"><span>+</span></a>
+                        </div>
+                        <p class="text-size-12 mb-0">Свидетельство о допуске к осуществлению деятельности по аттестации
+                            сварочного оборудования АЦСО-97</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3 mb-sm-0">
+                        <div class="image-container mb-2 mb-sm-3">
+                            <img src="{% static 'images/img-att-05.png' %}" alt="attestat" class="">
+                            <a href="#" class="bg-img-plus text-center"><span>+</span></a>
+                        </div>
+                        <p class="text-size-12 mb-0">Свидетельство о допуске к осуществлению деятельности по аттестации
+                            сварочных технологий АЦСТ-110</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="mb-3 mb-sm-0">
+                        <div class="image-container mb-2 mb-sm-3">
+                            <img src="{% static 'images/img-att-06.png' %}" alt="attestat" class="">
+                            <a href="#" class="bg-img-plus text-center"><span>+</span></a>
+                        </div>
+                        <p class="text-size-12 mb-0">Свидетельство о допуске к осуществлению деятельности по аттестации
+                            сварщиков и специалистов сварочного производства ТОР-5АЦ</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-lg-5">
+            <div class="d-none d-lg-block">
+                <div class="row align-items-center mb-5">
+                    <div class="col-sm-3">
+                        <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="mb-2">О Центре</p>
+                        <hr class="line-breadcrumb">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-5">
+            <div class="box-gray p-4 mb-4">
+                <h5 class="mb-4">Нормативно техническая документация</h5>
+                <p class="text-secondary text-size-14 mb-3">Основные документы</p>
+                <ul class="pl-2 pl-lg-3 ml-2 ml-lg-0 mb-0">
+                    <li><a href="#" target="_blank">ПБ 03-273-99</a></li>
+                    <li><a href="#" target="_blank">РД 03-495-02</a></li>
+                    <li><a href="#" target="_blank">РД 03-615-03</a></li>
+                    <li><a href="#" target="_blank">РД 03-614-03</a></li>
+                </ul>
+            </div>
+            <div class="box-gray p-4 mb-4">
+                <h5 class="mb-4">Документы для приема на аттестацию</h5>
+                <p class="text-secondary text-size-14 mb-3">Типовые формы заявки на аттестацию</p>
+                <div class="row mb-2 mb-sm-3">
+                    <div class="col-sm">
+                        <div class="mb-3 mb-sm-0">
+                            <p class="text-size-14 mb-2 mb-sm-3">Специалист сварочного производства</p>
+                            <p class="mb-1"><a href="#" target="_blank">Форма заявки продление, сварщик</a></p>
+                            <p class="mb-1"><a href="#" target="_blank">Форма заявки продление, ССП</a></p>
+                            <p class="mb-1"><a href="#" target="_blank">Образец заявки, сварщик</a></p>
+                            <p class="mb-1"><a href="#" target="_blank">Образец заявки, ССП</a></p>
+                            <p class="mb-1"><a href="#" target="_blank">Образец справки о стаже</a></p>
+                            <p class="mb-1"><a href="#" target="_blank">Перечень групп ОТУ</a></p>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="mb-3 mb-sm-0">
+                            <p class="text-size-14 mb-2 mb-sm-3">Сварщик</p>
+                            <p class="mb-1"><a href="#" target="_blank">Форма заявки</a></p>
+                            <p class="mb-1"><a href="#" target="_blank">Перечень групп ОТУ</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-0">
+                    <div class="col-sm">
+                        <div class="mb-3 mb-sm-0">
+                            <p class="text-size-14 mb-2 mb-sm-3">Сварочное оборудование</p>
+                            <p class="mb-1"><a href="#" target="_blank">Форма заявки, аттестация сварочного
+                                    оборудования</a></p>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="mb-3 mb-sm-0">
+                            <p class="text-size-14 mb-2 mb-sm-3">Технология сварки (наплавки)</p>
+                            <p class="mb-1"><a href="#" target="_blank">Форма заявки на аттестацию технологий сварки</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-block d-lg-none">
+        <a href="index.html" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
+    </div>
+
+</div>
+{% endblock %}

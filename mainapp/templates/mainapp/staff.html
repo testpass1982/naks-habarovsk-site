@@ -1,5 +1,68 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content  %}
-<h1>Template</h1>
+<div class="content-container plr20" id="page-top">
+      <div class="mb-3">
+        <h2>
+          Сотрудники ООО "НАКС Хабаровск"
+        </h2>
+        <p>
+          Наша команда состоит из опытных специалистов, имеющих профильное образование в области сварочного производства
+        </p>
+      </div>
+    <div class="row">
+    <div class="col-xs-12 col-lg-10">
+      <div class="card-deck">
+      {% if staff %}
+        {% for person in staff %}
+        <div class="card">
+          <img class="card-img-top" src="{{ person.photo.url }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ person.name }}</h5>
+            <p class="card-text">{{ person.job }}</p>
+            <p class="card-text"><small class="text-muted">{{ person.experience }}</small></p>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="card">
+          <img class="card-img-top" src="/static/img/person1.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">ФИО сотрудника</h5>
+            <p class="card-text">Должность сотрудника</p>
+            <p class="card-text"><small class="text-muted">Опыт работы</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="/static/img/person1.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">ФИО сотрудника</h5>
+            <p class="card-text">Должность сотрудника</p>
+            <p class="card-text"><small class="text-muted">Опыт работы</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="/static/img/person1.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">ФИО сотрудника</h5>
+            <p class="card-text">Должность сотрудника</p>
+            <p class="card-text"><small class="text-muted">Опыт работы</small></p>
+          </div>
+        </div>
+      {% endif %}
+      </div>
+      {% comment %} card deck end {% endcomment %}
+    </div>
+    <div class="col-xs-12 col-lg-2">
+      <h2>
+        Нужна консультация о наших услугах?
+      </h2>
+      <p>
+        На странице "Контакты" вы можете найти телефоны всех отделов или написать запрос с помощью формы
+      </p>
+      <a href="{% url 'contact' %}" class="btn btn-primary">Контакты отделов</a>
+    </div>
+  </div>
+  {% comment %} row end {% endcomment %}
+</div>
 {% endblock  %}

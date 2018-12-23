@@ -1,5 +1,164 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content  %}
-<h1>test</h1>
+ <div class="container mb-5">
+        <div class="row">
+            <div class="col-xl-8">
+                <div class="row align-items-center mb-3">
+                    <div class="col col-sm-8">
+                        <h4 class="mb-0">Новости</h4>
+                    </div>
+                    <div class="col col-sm-4 text-right">
+                        <a href="#" class="text-dark text-size-14">Все новости  →</a>
+                    </div>
+                </div>
+
+                <!-- News not photo -->
+                <div class="row">
+                    <div class="col-sm order-2 order-xl-1">
+                        <div class="news-not-photo p-3 p-sm-0 mb-4 mb-sm-5">
+                            <div class="row mb-2">
+                                <div class="col"><span class="head-news font-text-thin text-size-14 text-primary">Новости НАКС</span></div>
+                                <div class="col text-right"><span class="head-news font-text-thin text-size-14 text-muted">12 Июля 2018</span></div>
+                            </div>
+                            <p class="font-text-demi">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                            <p class="font-text-thin text-size-14 d-none d-sm-block">Соглашение о сотрудничестве между Советом по профессиональным квалификациям в области сварки</p>
+                            <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="img-fluid mr-2">Соглашение</a>
+                        </div>
+                        <div class="news-not-photo p-3 p-sm-0 mb-4 mb-sm-5 mb-xl-4">
+                            <div class="row mb-2">
+                                <div class="col"><span class="head-news font-text-thin text-size-14 text-primary">Новости АЦ Хабаровск</span></div>
+                                <div class="col text-right"><span class="head-news font-text-thin text-size-14 text-muted">05 Июня 2018</span></div>
+                            </div>
+                            <p class="font-text-demi">Соглашение между Советом по профессиональным квалификациям в области сварки и Министерством труда</p>
+                            <p class="font-text-thin text-size-14 d-none d-sm-block">Подписано соглашение между Советом по профессиональным квалификациям в области сварки и Министерством труда и социальной защиты населения Забайкальского края</p>
+                            <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="img-fluid mr-2">Соглашение</a>
+                        </div>
+                        <div class="news-not-photo p-3 p-sm-0 mb-5 mb-xl-4 d-sm-none d-lg-block">
+                            <div class="row mb-2">
+                                <div class="col"><span class="head-news font-text-thin text-size-14 text-primary">Новости НАКС</span></div>
+                                <div class="col text-right"><span class="head-news font-text-thin text-size-14 text-muted">04 Июня 2018</span></div>
+                            </div>
+                            <p class="font-text-demi">Благодарность Территориального центра повышения квалификации Национального агентства развития квалификаций</p>
+                            <p class="font-text-thin text-size-14 d-none d-sm-block">Благодарность Территориального центра повышения квалификации Национального агентства развития квалификаций по Приволжскому федеральному округу государственного бюджетного...</p>
+                            <a href="#" target="_blank" class="btn btn-silver btn-sm"><img src="static/images/img-icon-doc-min.png" alt="Icon doc" class="img-fluid mr-2">Благодарность</a>
+                        </div>
+                    </div><!-- End News not photo -->
+
+                    <!-- News with photo -->
+                    <div class="col-sm-7 order-1 order-xl-2">
+                        <div class="card news-with-photo border-0 mb-4">
+                            <img class="card-img" src="static/images/img-news1.png" alt="News photo">
+                            <div class="card-img-overlay d-flex align-items-start">
+                                <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>10 Июля</strong><br>2018</span>
+                                <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                            </div>
+                            <div class="card-img-overlay d-flex align-items-end">
+                                <a href="#" class="card-text">Соглашение о сотрудничестве между СРО НП "НАКС" и CNPC INTERNATIONAL WELDING TRAINING CENTER</a>
+                            </div>
+                        </div>
+                        <div class="card news-with-photo border-0 mb-4">
+                            <img class="card-img" src="static/images/img-news2.png" alt="News photo">
+                            <div class="card-img-overlay d-flex align-items-start">
+                                <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>04 Июля</strong><br>2018</span>                             
+                                <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                            </div>
+
+                            <div class="card-img-overlay d-flex align-items-end">
+                                <a href="#" class="card-text">Руководство НАКС в Рязани</a>
+                            </div>
+                        </div>
+                        <div class="card news-with-photo border-0 mb-4 mb-sm-5 mb-xl-4">
+                            <img class="card-img" src="static/images/img-news3.png" alt="News photo">
+                            <div class="card-img-overlay d-flex align-items-start">
+                                <span class="font-text-thin text-size-14 text-white text-right mr-3"><strong>05 Июля</strong><br>2018</span>
+                                <span class="font-text-thin text-size-14 text-white">Новости НАКС</span> 
+                            </div>
+
+                            <div class="card-img-overlay d-flex align-items-end">
+                                <a href="#" class="card-text">Независимая оценка квалификации и государственная итоговая аттестация выпускников. Реализация пилотного проекта</a>
+                            </div>
+                        </div>
+                    </div><!-- End News with photo -->
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div class="row">
+                    <!-- Статьи -->
+                    <div class="col-sm-6 col-xl-12">
+                        <div class="section-block mb-5">
+                            <div class="row align-items-center mb-3">
+                                <div class="col">
+                                    <h4 class="mb-0">Статьи</h4>
+                                </div>
+                                <div class="col text-right">
+                                    <a href="#" class="text-dark text-size-14">Все статьи  →</a>
+                                </div>
+                            </div>
+                            <div class="section p-3 p-sm-4 mb-4">
+                                <p class="text-size-20 mb-3 mb-lg-4">Особенности неразрушающего контроля</p>
+                                <div class="row">
+                                    <div class="col-6"><small>10 Июля 2018</small></div>
+                                    <div class="col-6 text-right"><a href="#" class="btn btn-outline-purple btn-sm">Читать  →</a></div>
+                                </div>
+                            </div>
+                            <div class="section p-3 p-sm-4 mb-4">
+                                <p class="text-size-20 mb-3 mb-lg-4">Применение СМТ технологий при сварке</p>
+                                <div class="row">
+                                    <div class="col-6"><small>08 Июля 2018</small></div>
+                                    <div class="col-6 text-right"><a href="#" class="btn btn-outline-purple btn-sm">Читать  →</a></div>
+                                </div>
+                            </div>
+                            <div class="section p-3 p-sm-4 mb-4">
+                                <p class="text-size-20 mb-3 mb-lg-4">Соединение разнородных материалов</p>
+                                <div class="row">
+                                    <div class="col-6"><small>05 Июля 2018</small></div>
+                                    <div class="col-6 text-right"><a href="#" class="btn btn-outline-purple btn-sm">Читать  →</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End Статьи -->
+
+                    <!-- Документы -->
+                    <div class="col-sm-6 col-xl-12">
+                        <div class="documents-block">
+                            <div class="row align-items-center mb-3">
+                                <div class="col-6">
+                                    <h4 class="mb-0">Документы</h4>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <a href="#" class="text-dark text-size-14">Все&nbsp;документы&nbsp;→</a>
+                                </div>
+                            </div>
+                            <div class="doc p-3 p-sm-4 mb-4">
+                                <p class="font-text-medium text-size-14 mb-3 mb-xl-4">Руководящие документы</p>
+                                <div class="row align-items-center">
+                                    <div class="col-2"><img src="static/images/img-icon-doc.png" alt="Icon doc" class="img-fluid"></div>
+                                    <div class="col"><a href="#" class="d-block font-text-thin text-size-14" target="_blank">Перечень групп технических устройств опасных производственных объектов</a></div>
+                                </div>
+                            </div>
+                            <div class="doc p-3 p-sm-4 mb-4">
+                                <p class="font-text-medium text-size-14 mb-3 mb-xl-4">Руководящие документы</p>
+                                <div class="row align-items-center">
+                                    <div class="col-2"><img src="static/images/img-icon-doc.png" alt="Icon doc" class="img-fluid"></div>
+                                    <div class="col"><a href="#" class="d-block font-text-thin text-size-14" target="_blank">Перечень групп технических устройств опасных производственных объектов</a></div>
+                                </div>
+                            </div>
+                            <div class="doc p-3 p-sm-4 mb-4">
+                                <p class="font-text-medium text-size-14 mb-3 mb-xl-4">Руководящие документы</p>
+                                <div class="row align-items-center">
+                                    <div class="col-2"><img src="static/images/img-icon-doc.png" alt="Icon doc" class="img-fluid"></div>
+                                    <div class="col"><a href="#" class="d-block font-text-thin text-size-14" target="_blank">Перечень групп технических устройств опасных производственных объектов</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Документы -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 {% endblock  %}

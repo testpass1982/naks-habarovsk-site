@@ -19,7 +19,7 @@
                             </li>
                            
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}">О&nbsp;Центре</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}#page-top">О&nbsp;Центре</a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link py-3 py-sm-2" href="about_center.html">Услуги</a>
@@ -27,22 +27,22 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle py-3 py-sm-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Услуги</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Аттестация специалистов сварочного производства</a>
-                                    <a class="dropdown-item" href="#">Аттестация сварщиков</a>
-                                    <a class="dropdown-item" href="#">Аттестация сварочного оборудования</a>
-                                    <a class="dropdown-item" href="#">Аттестация технологий сварки</a>
-                                    <a class="dropdown-item" href="#">Аттестация в АП2</a>
-                                    <a class="dropdown-item" href="#">Оценка квалификаций</a>
+                                    <a class="dropdown-item" href="/detailview/post/1#page-top">Аттестация специалистов сварочного производства</a>
+                                    <a class="dropdown-item" href="/detailview/post/2#page-top">Аттестация сварщиков</a>
+                                    <a class="dropdown-item" href="/detailview/post/3#page-top">Аттестация сварочного оборудования</a>
+                                    <a class="dropdown-item" href="/detailview/post/4#page-top">Аттестация технологий сварки</a>
+                                    <a class="dropdown-item" href="/detailview/post/5#page-top">Аттестация в АП2</a>
+                                    <a class="dropdown-item" href="/detailview/post/6#page-top">Оценка квалификаций</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'documents' %}">Документация</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'documents' %}#page-top">Документация</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}">Руководящий состав</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}#page-top">Руководящий состав</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'contact' %}">Контакты</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'contact' %}#page-top">Контакты</a>
                             </li>
                         </ul>
                     </div>
@@ -74,14 +74,14 @@
                     <p class="text-size-14 mb-4">Область аккредитации Центра охватывает все объекты и группы опасных технических устройств, подконтрольные Ростехнадзору, все виды сварочного оборудования и способы сварки, включая наплавку, пайку и термическую резку</p>
 
                     <hr class="bg-white">
-                    <a href="#" class="d-block text-white py-2">Профстандарты в области сварки  →</a>
+                    <a href="/detailview/post/6#page-top" class="d-block text-white py-2">Профстандарты в области сварки  →</a>
                     <hr class="bg-white mb-5">
 
                     <div class="row align-items-center">
                         <div class="col-sm-5">
                             <div class="row align-items-center">
                                 <div class="col-sm-5">
-                                    <a href="#" class="btn btn-outline-white btn-block py-2">Подробнее  →</a>
+                                    <a href="{% url 'about' %}#page-top" class="btn btn-outline-white btn-block py-2">Подробнее  →</a>
                                 </div>
 
                                 <div class="col-sm-1 text-center my-2 my-sm-0">или</div>
@@ -114,7 +114,7 @@
                         <div class="block-amenities p-3 mb-4">
                             <div class="row align-items-center">
                                 <div class="col-10">
-                                    <a href="#" class="d-block">Аттестация специалистов сварочного производства</a>
+                                    <a href="/detailview/post/1#page-top" class="d-block">Аттестация специалистов сварочного производства</a>
                                 </div>
                                 <div class="col-2">
                                     <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
@@ -126,32 +126,7 @@
                         <div class="block-amenities p-3 mb-4">
                             <div class="row align-items-center">
                                 <div class="col-10">
-                                    <a href="#" class="d-block">Аттестация<br>сварщиков</a>
-                                </div>
-                                <div class="col-2">
-                                    <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6">
-                        <div class="block-amenities p-3 mb-4">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <a href="#" class="d-block">Аттестация сварочного<br>оборудования</a>
-                                </div>
-                                <div class="col-2">
-                                    <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="block-amenities p-3 mb-4">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <a href="#" class="d-block">Оценка<br>квалификаций</a>
+                                    <a href="/detailview/post/2#page-top" class="d-block">Аттестация<br>сварщиков</a>
                                 </div>
                                 <div class="col-2">
                                     <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
@@ -164,7 +139,7 @@
                         <div class="block-amenities p-3 mb-4">
                             <div class="row align-items-center">
                                 <div class="col-10">
-                                    <a href="#" class="d-block">Аттестация<br>в АП2</a>
+                                    <a href="/detailview/post/3#page-top" class="d-block">Аттестация сварочного<br>оборудования</a>
                                 </div>
                                 <div class="col-2">
                                     <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
@@ -176,7 +151,32 @@
                         <div class="block-amenities p-3 mb-4">
                             <div class="row align-items-center">
                                 <div class="col-10">
-                                    <a href="#" class="d-block">Аттестация технологий сварки (наплавки)</a>
+                                    <a href="/detailview/post/6#page-top" class="d-block">Оценка<br>квалификаций</a>
+                                </div>
+                                <div class="col-2">
+                                    <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="block-amenities p-3 mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-10">
+                                    <a href="/detailview/post/5#page-top" class="d-block">Аттестация<br>в АП2</a>
+                                </div>
+                                <div class="col-2">
+                                    <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="block-amenities p-3 mb-4">
+                            <div class="row align-items-center">
+                                <div class="col-10">
+                                    <a href="/detailview/post/4#page-top" class="d-block">Аттестация технологий сварки (наплавки)</a>
                                 </div>
                                 <div class="col-2">
                                     <img src="{% static 'images/img-head-arrow-right.png' %}" class="img-fluid text-right" alt="Icon arrow right">
@@ -195,7 +195,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-7">
-                        <p class="font-text-thin mb-0"><img src="{% static 'images/img-location.png' %}" alt="Icon location" class="img-fluid mr-2">Хабаровский край, г. Хабаровск, переулок Бородинский, дом 1, 1 этаж.</p>
+                        <p class="font-text-thin mb-0"><img src="{% static 'images/img-location.png' %}" alt="Icon location" class="img-fluid mr-2"><a href="{% url 'contact' %}#page-top">Хабаровский край, г. хабаровск, переулок бородинский, дом 1, 1 этаж.</a></p>
                     </div>
                     <div class="col-sm-5">
                         <p class="font-text-thin text-right mb-0">ООО «НАКС Хабаровск» в реестрах НАКС:&nbsp;<a href="http://new.naks.ru/sasv/acso/detail.php?ID=306" target="_blank">АЦСО-97</a></p>
@@ -267,7 +267,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}">О&nbsp;Центре</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}#page-top">О&nbsp;Центре</a>
                             </li>
 
                             <!-- <li class="nav-item">
@@ -277,16 +277,16 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle py-3 py-sm-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Услуги</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Аттестация специалистов сварочного производства</a>
-                                    <a class="dropdown-item" href="#">Аттестация сварщиков</a>
-                                    <a class="dropdown-item" href="#">Аттестация сварочного оборудования</a>
-                                    <a class="dropdown-item" href="#">Аттестация технологий сварки</a>
-                                    <a class="dropdown-item" href="#">Аттестация в АП2</a>
-                                    <a class="dropdown-item" href="#">Оценка квалификаций</a>
+                                    <a class="dropdown-item" href="/detailview/post/1#page-top">Аттестация специалистов сварочного производства</a>
+                                    <a class="dropdown-item" href="/detailview/post/2#page-top">Аттестация сварщиков</a>
+                                    <a class="dropdown-item" href="/detailview/post/3#page-top">Аттестация сварочного оборудования</a>
+                                    <a class="dropdown-item" href="/detailview/post/4#page-top">Аттестация технологий сварки</a>
+                                    <a class="dropdown-item" href="/detailview/post/5#page-top">Аттестация в АП2</a>
+                                    <a class="dropdown-item" href="/detailview/post/6#page-top">Оценка квалификаций</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'documents' %}">Документация</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'documents' %}#page-top">Документация</a>
                             </li>
 
                             <!-- <li class="nav-item">
@@ -294,7 +294,7 @@
                             </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'staff' %}">Сотрудники</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'staff' %}#page-top">Сотрудники</a>
                             </li>
                             
                             <!-- <li class="nav-item dropdown">
@@ -315,7 +315,7 @@
                             </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="{% url 'contact' %}">Контакты</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'contact' %}#page-top">Контакты</a>
                             </li>
                         </ul>
 

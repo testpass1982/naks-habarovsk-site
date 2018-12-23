@@ -87,11 +87,17 @@ class AskQuestionForm(forms.Form):
             attrs={'class': 'checkmark'}))
 
 
+class DocumentSearchForm(forms.Form):
+    document_name = forms.CharField(max_length=50, required=False, widget=forms.TextInput(
+        attrs={'class': 'form__control__doc',
+               'placeholder': 'Введите название документа'}
+    ))
+
 class SearchRegistryForm(forms.Form):
     fio = forms.CharField(max_length=64, required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form__subject__search'}))
     work_place = forms.CharField(max_length=64, required=False, widget=forms.TextInput(
-        attrs={'class': 'form-control'}))
+        attrs={'class': 'form__subject__search'}))
 
     # def clean(self):
     #     document = self.cleaned_data.get('document', None)
