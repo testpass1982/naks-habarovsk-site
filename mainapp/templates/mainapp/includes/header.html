@@ -15,11 +15,11 @@
                                 <span class="text-white" aria-hidden="true">&times;</span>
                             </button>
                             <li class="nav-item">
-                                <a class="nav-link active py-3 py-sm-2" href="index.html">Главная</a>
+                                <a class="nav-link active py-3 py-sm-2" href="{% url 'index' %}">Главная</a>
                             </li>
                            
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="about_center.html">О&nbsp;Центре</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}">О&nbsp;Центре</a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link py-3 py-sm-2" href="about_center.html">Услуги</a>
@@ -36,13 +36,13 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="about_center.html">Документация</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'documents' %}">Документация</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="about_center.html">Руководящий состав</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}">Руководящий состав</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="contacts.html">Контакты</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'contact' %}">Контакты</a>
                             </li>
                         </ul>
                     </div>
@@ -207,7 +207,7 @@
             <div class="container py-3">
                 <div class="row align-items-center">
                     <div class="col-sm-5 col-xl-4">
-                        <a href="#">
+                        <a href="{% url 'index' %}">
                             <img class="img-fluid" src="{% static 'images/logo-head.png' %}" alt="Logotip_company">
                         </a>
                     </div>
@@ -263,11 +263,11 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link active py-3 py-sm-2" href="index.html">Главная</a>
+                                <a class="nav-link active py-3 py-sm-2" href="{% url 'index' %}">Главная</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="about_center.html">О&nbsp;Центре</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}">О&nbsp;Центре</a>
                             </li>
 
                             <!-- <li class="nav-item">
@@ -286,7 +286,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="news.html">Документация</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'documents' %}">Документация</a>
                             </li>
 
                             <!-- <li class="nav-item">
@@ -294,7 +294,7 @@
                             </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="news.html">Руководящий&nbsp;состав</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'staff' %}">Сотрудники</a>
                             </li>
                             
                             <!-- <li class="nav-item dropdown">
@@ -315,7 +315,7 @@
                             </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link py-3 py-sm-2" href="contacts.html">Контакты</a>
+                                <a class="nav-link py-3 py-sm-2" href="{% url 'contact' %}">Контакты</a>
                             </li>
                         </ul>
 
