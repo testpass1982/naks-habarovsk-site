@@ -154,7 +154,7 @@ def details(request, pk=None, content=None):
     print(request.resolver_match)
     print(request.resolver_match.url_name)
 
-    return render(request, 'mainapp/details.html', context)
+    return render(request, 'mainapp/page_details.html', context)
 
 
 def create_factory(request, content_type):
@@ -265,27 +265,29 @@ def documents(request):
                     title__contains=request.GET.get('document_name')).order_by('-created_date')
                 print('SEARCH_RESULT', search_result)
                 search_result_content['search_result'] = search_result
-    accreditation_list = Document.objects.filter(
-        tags__in=Tag.objects.filter(name='Аккредитация САСв'))
-    cok_accreditation_list = Document.objects.filter(
-        tags__in=Tag.objects.filter(name='Допуск ЦОК'))
-    os_doc_list = Document.objects.filter(
-        tags__in=Tag.objects.filter(name='Оценочное средство'))
-    norm_doc_list = Document.objects.filter(
-        tags__in=Tag.objects.filter(name='Нормативный документ'))
-    sogl_doc_list = Document.objects.filter(
-        tags__in=Tag.objects.filter(name='Соглашение'))
+    all_documents = Document.objects.all().order_by('created_date')
+    # accreditation_list = Document.objects.filter(
+    #     tags__in=Tag.objects.filter(name='Аккредитация САСв'))
+    # cok_accreditation_list = Document.objects.filter(
+    #     tags__in=Tag.objects.filter(name='Допуск ЦОК'))
+    # os_doc_list = Document.objects.filter(
+    #     tags__in=Tag.objects.filter(name='Оценочное средство'))
+    # norm_doc_list = Document.objects.filter(
+    #     tags__in=Tag.objects.filter(name='Нормативный документ'))
+    # sogl_doc_list = Document.objects.filter(
+    #     tags__in=Tag.objects.filter(name='Соглашение'))
     # print(accreditation_list)
     # print(cok_accreditation_list)
     # print(os_doc_list)
 
     content = {
         'title': 'Документы',
-        'accreditation_list': accreditation_list,
-        'cok_accreditation_list': cok_accreditation_list,
-        'os_doc_list': os_doc_list,
-        'norm_doc_list': norm_doc_list,
-        'sogl_doc_list': sogl_doc_list,
+        # 'accreditation_list': accreditation_list,
+        # 'cok_accreditation_list': cok_accreditation_list,
+        # 'os_doc_list': os_doc_list,
+        # 'norm_doc_list': norm_doc_list,
+        # 'sogl_doc_list': sogl_doc_list,
+        'documents': all_documents,
         'search_form': search_form
     }
     if search_result_content:

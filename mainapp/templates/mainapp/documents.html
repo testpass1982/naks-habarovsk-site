@@ -1,7 +1,7 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
 {% block content  %}
-<div class="container mb-5">
+<div class="container mb-5" id="page-top">
 
         <div class="row">
 
@@ -9,7 +9,7 @@
                 <div class="d-none d-sm-block">
                     <div class="row align-items-center mb-5">
                         <div class="col-sm-3 col-lg-2">
-                            <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                            <a href="{% url 'index' %}" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
                         </div>
                         <div class="col-sm-9 col-lg-10">
                             <p class="mb-2">Документы</p>
@@ -19,11 +19,11 @@
                 </div>
                 <h4 class="mb-4">Документы</h4>
 
-                <form class="search-docs border-top border-bottom py-4 py-sm-5 mb-4">
+                <form class="search-docs border-top border-bottom py-4 py-sm-5 mb-4" method="get" action="#page-top">
                     <div class="form-row mb-4">
                         <div class="col-sm-6 col-xl-4 mb-4 mb-sm-0">
                             <label for="">Поиск по названию</label>
-                            <input type="text" class="form-control" id="">
+                            {{ search_form.document_name }}
                         </div>
                         <div class="col-sm-6 col-xl-4">
                             <label for="inputState">Вид документа</label>
@@ -37,8 +37,8 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-blue px-4">Найти</button>
-                    <a href="#" class="btn btn-link btn-sm text-secondary" role="button">Сбросить</a>
+                    <button type="submit" name="search_document" class="btn btn-blue px-4">Найти</button>
+                    <a href="{% url 'documents' %}#page-top" class="btn btn-link btn-sm text-secondary" role="button">Сбросить</a>
                 </form>
 
                 <nav class="mb-4" aria-label="Page navigation example">
@@ -55,29 +55,69 @@
                     </ul>
                 </nav>
 
+                {% if search_result %}
+                <div class="alert alert-success">
+                    Найдено документов: <strong>{{ search_result.count }}</strong>
+                </div>
+                
+                <h4>Результаты поиска: </h4>
+
+                {% for document in search_result %}
+                
+                 <div class="doc-info border-bottom p-4 p-xl-5 mb-4">
+                    <div class="row">
+                        <div class="col-sm-1 align-self-center d-none d-sm-block">
+                            <img src="{% static 'images/icon-pdf.png' %}" class="d-inline-block" alt="Иконка .pdf">
+                        </div>
+                        <div class="col-sm-8 align-self-center">
+                            <p class="text-size-14 mb-sm-0">{{ document.title }}</p>
+                        </div>
+
+                        <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{{ document.document.url }}" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотр</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                {% endfor %}
+
+                {% else %}
+
+                
+                {% for document in documents %}
                 <div class="doc-info border-bottom p-4 p-xl-5 mb-4">
                     <div class="row">
                         <div class="col-sm-1 align-self-center d-none d-sm-block">
                             <img src="{% static 'images/icon-pdf.png' %}" class="d-inline-block" alt="Иконка .pdf">
                         </div>
                         <div class="col-sm-8 align-self-center">
-                            <p class="text-size-14 mb-sm-0">Рекомендации по применению РД 03-615–03 (Порядок применения сварочных технологий при изготовлении, монтаже, ремонте и реконструкции технических устройств для опасных производственных объектов)</p>
+                            <p class="text-size-14 mb-sm-0">{{ document.title }}</p>
                         </div>
 
                         <div class="col-sm-3 offset-xl-1 col-xl-2 float-sm-right">
                             <div class="row">
                                 <div class="col">
-                                    <a href="#" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
+                                    <a href="{{ document.document.url }}" class="w-100 btn btn-light-blue text-uppercase text-size-14 btn-block mb-3">Скачать</a>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотреть</a>
+                                    <a href="#" class="w-100 btn btn-outline-light text-uppercase text-size-14 btn-block" data-toggle="modal" data-target="#modal-docsView">Просмотр</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="doc-info border-bottom p-4 p-sm-5 mb-4">
+                {% endif %}
+
+                {% comment %} <div class="doc-info border-bottom p-4 p-sm-5 mb-4">
                     <div class="row">
                         <div class="col-sm-1 align-self-center d-none d-sm-block">
                             <img src="{% static 'images/icon-pdf.png' %}" class="d-inline-block" alt="Иконка .pdf">
@@ -163,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> {% endcomment %}
 
                 <nav class="mb-4" aria-label="Page navigation example">
                     <ul class="pagination pagination-sm justify-content-center justify-content-sm-end">
@@ -182,7 +222,7 @@
                 <div class="d-none d-lg-block">
                     <div class="row align-items-center mb-5">
                         <div class="col-sm-3 col-lg-2">
-                            <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                            <a href="{% url 'index' %}" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
                         </div>
                         <div class="col-sm-9 col-lg-10">
                             <p class="mb-2">Документы</p>
@@ -193,7 +233,7 @@
             </div>
         </div>
         <div class="d-block d-lg-none">
-            <a href="index.html" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
+            <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
         </div>      
 
     </div>

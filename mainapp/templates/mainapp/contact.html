@@ -1,11 +1,11 @@
 {% extends 'mainapp/base.html' %}
 
 {% block content %}
-<div class="container mb-5">
+<div class="container mb-5" id="page-top">
         <div class="d-none d-sm-block">
             <div class="row align-items-center mb-5">
                 <div class="col-sm-3 col-lg-2">
-                    <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                    <a href="{% url 'index' %}" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
                 </div>
                 <div class="col-sm-9 col-lg-10">
                     <p class="mb-2">Контакты</p>
@@ -80,7 +80,7 @@
                 <div class="d-none d-lg-block">
                     <div class="row align-items-center mb-5">
                         <div class="col-sm-3">
-                            <a href="index.html" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
+                            <a href="{% url 'index' %}" class="btn btn-outline-secondary text-size-12 py-2">&larr; На главную</a>
                         </div>
                         <div class="col-sm-9">
                             <p class="mb-2">Контакты</p>
@@ -96,7 +96,7 @@
             </div>
         </div>
         <div class="d-block d-lg-none">
-            <a href="index.html" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
+            <a href="{% url 'index' %}" class="btn btn-outline-secondary btn-block text-size-12 mr-4 py-2">&larr; На главную</a>
         </div>      
 
     </div> 

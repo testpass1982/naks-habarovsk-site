@@ -89,7 +89,7 @@ class AskQuestionForm(forms.Form):
 
 class DocumentSearchForm(forms.Form):
     document_name = forms.CharField(max_length=50, required=False, widget=forms.TextInput(
-        attrs={'class': 'form__control__doc',
+        attrs={'class': 'form-control',
                'placeholder': 'Введите название документа'}
     ))
 
