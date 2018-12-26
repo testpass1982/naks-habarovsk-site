@@ -72,6 +72,8 @@ class Post(ContentMixin):
         Category, verbose_name='Категория', on_delete=models.CASCADE)
     publish_on_news_page = models.BooleanField(
         verbose_name="Опубликовать в ленте новостей", default=False)
+    secondery_main = models.BooleanField(
+        verbose_name="Опубликовать на главной как новость без картинки", default=False)
 
     class Meta:
         ordering = ['created_date']

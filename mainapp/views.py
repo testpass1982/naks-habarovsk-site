@@ -45,14 +45,20 @@ def index(request):
             raise ValidationError('form not valid')
 
     main_page_news = Post.objects.filter(
-        publish_on_main_page=True).order_by('-published_date')[:2]
+        publish_on_main_page=True).order_by('-published_date')[:3]
+
+    not_pictured_posts = Post.objects.filter(
+        secondery_main=True).order_by('-published_date')[:3]
+    
+    main_page_documents = Document.objects.filter(
+        publish_on_main_page=True).order_by('-published_date')[:3]
 
     # main_page_secondery_news = Post.objects.filter(
     #     secondery_main=True).order_by('-published_date')[:4]
-    posts = {}
+    pictured_posts = {}
     for post in main_page_news:
-        posts[post] = PostPhoto.objects.filter(post__pk=post.pk).first()
-    print(posts)
+        pictured_posts[post] = PostPhoto.objects.filter(post__pk=post.pk).first()
+    # print(posts)
 
     main_page_articles = Article.objects.filter(
         publish_on_main_page=True).order_by('-published_date')[:3]
@@ -62,9 +68,10 @@ def index(request):
 
     content = {
         'title': title,
-        'posts': posts,
-        # 'secondery_news': main_page_secondery_news,
+        'pictured_posts': pictured_posts,
+        'not_pictured_posts': not_pictured_posts,
         'articles': main_page_articles,
+        'documents': main_page_documents,
         'send_message_form': SendMessageForm(),
         'subscribe_form': SubscribeForm(),
         'ask_question_form': AskQuestionForm()
