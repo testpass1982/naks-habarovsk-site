@@ -51,14 +51,14 @@ def index(request):
         secondery_main=True).order_by('-published_date')[:3]
     
     main_page_documents = Document.objects.filter(
-        publish_on_main_page=True).order_by('-published_date')[:3]
+        publish_on_main_page=True).order_by('-created_date')[:3]
 
     # main_page_secondery_news = Post.objects.filter(
     #     secondery_main=True).order_by('-published_date')[:4]
     pictured_posts = {}
     for post in main_page_news:
         pictured_posts[post] = PostPhoto.objects.filter(post__pk=post.pk).first()
-    # print(posts)
+    print(pictured_posts)
 
     main_page_articles = Article.objects.filter(
         publish_on_main_page=True).order_by('-published_date')[:3]
@@ -71,7 +71,7 @@ def index(request):
         'pictured_posts': pictured_posts,
         'not_pictured_posts': not_pictured_posts,
         'articles': main_page_articles,
-        'documents': main_page_documents,
+        'docs': main_page_documents,
         'send_message_form': SendMessageForm(),
         'subscribe_form': SubscribeForm(),
         'ask_question_form': AskQuestionForm()

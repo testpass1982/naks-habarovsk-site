@@ -238,8 +238,17 @@ class Staff(models.Model):
 
 class Menu(models.Model):
     """linking main page UI elements with its description"""
+    LINK_CHOICES = (
+        ('ATTSP', 'Аттестация специалистов сварочного производства'),
+        ('ATTSV', 'Аттестация сварщиков'),
+        ('ATTSO', 'Аттестация сварочного оборудования'),
+        ('ATTST', 'Аттестация технологий сварки'),
+        ('ATTAP2', 'Аттестация в АП2'),
+        ('OKSV', 'Оценка квалификаций'),
+    )
+    menu_link = models.CharField(max_length=100, choices=LINK_CHOICES, default='NONE')
     title = models.CharField(u'Заголовок меню', max_length=60)
-    url = models.URLField(u'Адрес ссылки', max_length=200)
+    url = models.CharField(u'Адрес ссылки', max_length=200, default="НЕТ")
     order = models.SmallIntegerField(u'Порядок вывода')
 
     class Meta:
