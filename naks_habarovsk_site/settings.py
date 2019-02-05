@@ -133,7 +133,7 @@ SASS_OUTPUT_STYLE = 'compact'
 SASS_PRECISION = 8
 SASS_ROOT = os.path.join(BASE_DIR, 'assets')
 SASS_PROCESSOR_ROOT = SASS_ROOT
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
