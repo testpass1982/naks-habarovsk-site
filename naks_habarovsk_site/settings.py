@@ -25,7 +25,7 @@ SECRET_KEY = '6a&a5bab2j3&f24if0=vnik0g)+18k99a+q27y2jfk$h%^onyd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['naks-habarovsk.minml.ru']
 
 
 # Application definition
@@ -133,7 +133,7 @@ SASS_OUTPUT_STYLE = 'compact'
 SASS_PRECISION = 8
 SASS_ROOT = os.path.join(BASE_DIR, 'assets')
 SASS_PROCESSOR_ROOT = SASS_ROOT
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
