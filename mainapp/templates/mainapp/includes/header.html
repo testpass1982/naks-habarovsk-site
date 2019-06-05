@@ -20,13 +20,25 @@
                 </div>
                 <div class="col-sm-5">
                     {% if profile %}
-                    <p class="font-text-thin text-right mb-0">{{ profile.org_short_name }} в реестрах НАКС:<br>
-                    <a href="{{ profile.org_acsp_reestr_link }}" target="_blank">{{ profile.org_acsp_code }}</a>
-                    <a href="{{ profile.org_csp_reestr_link }}" target="_blank">{{ profile.org_csp_code }}</a>
-                    <a href="{{ profile.org_acso_reestr_link }}" target="_blank">{{ profile.org_acso_code }}</a>
-                    <a href="{{ profile.org_acst_reestr_link }}" target="_blank">{{ profile.org_acst_code }}</a>
-                    <a href="{{ profile.org_cok_reestr_link }}" target="_blank">{{ profile.org_cok_code }}</a>
+                        <p class="font-text-thin text-right mb-0">{{ profile.org_short_name }}<br>
+                        В реестрах НАКС:&nbsp;
+                        {% if profile.org_acsp_reestr_link %}
+                            <a href="{{ profile.org_acsp_reestr_link }}" target="_blank">{{ profile.org_acsp_code }}</a>
+                        {% endif %}
+                        {% if profile.org_csp_reestr_link %}
+                            <a href="{{ profile.org_csp_reestr_link }}" target="_blank">{{ profile.org_csp_code }}</a>
+                        {% endif %}
+                        {% if profile.org_acso_reestr_link %}
+                            <a href="{{ profile.org_acso_reestr_link }}" target="_blank">{{ profile.org_acso_code }}</a>
+                        {% endif %}
+                        {% if profile.org_acst_reestr_link %}
+                            <a href="{{ profile.org_acst_reestr_link }}" target="_blank">{{ profile.org_acst_code }}</a>
+                        {% endif %}
+                        {% if profile.org_cok_reestr_link %}
+                            <a href="{{ profile.org_cok_reestr_link }}" target="_blank">{{ profile.org_cok_code }}</a>
+                        {% endif %}
                     {% endif %}
+
                 </div>
             </div>
         </div>
@@ -51,7 +63,6 @@
                             <p class="font-text-demi mb-0">{{ profile.org_secondary_phone }}</p>
                         </div>
                         <div class="col-6 text-right">
-                            <p class="font-text-thin text-secondary mb-0">Email:</p>
                             <p class="font-text-thin text-secondary mb-0">{{ profile.org_email }}</p>
                         </div>
                     </div>
@@ -130,7 +141,7 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link py-3 py-sm-2" href="{% link_holder 'OK' %}">{% title_holder 'OK' %}</a>
+                            <a class="nav-link py-3 py-sm-2" href="{% link_holder 'OK' %}#page-top">{% title_holder 'OK' %}</a>
                         </li>
 
                         <li class="nav-item">
@@ -212,7 +223,7 @@
                         </div>
                     </div>
                     <div class="order-1 order-lg-2 col-lg-4 col-xl-7">
-                        <a href="#" class="d-block text-white">Профстандарты в области сварки →</a>
+                        <a href="#" class="d-block text-white">{% title_holder 'PROFSTANDARTI' %} →</a>
                         <hr class="line-header d-block d-lg-none mb-5">
                     </div>
                 </div>

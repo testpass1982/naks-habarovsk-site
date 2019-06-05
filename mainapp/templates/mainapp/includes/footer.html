@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}{% load link_holders %}
 <div class="penultimate-block pt-5 pb-4 d-none d-sm-block">
     <div class="container" id="page-top">
         <div class="row">
@@ -142,11 +142,12 @@
                 </div>
             </div>
             <div class="col-sm-2 col-xl">
-                <p class="mb-2"><a href="#" class="link-footer">О&nbsp;центре</a></p>
-                <p class="mb-2"><a href="#" class="link-footer">Услуги</a></p>
-                <p class="mb-2"><a href="#" class="link-footer">Документация</a></p>
-                <p class="mb-2"><a href="#" class="link-footer">Руководящий состав</a></p>
-                <p class="mb-2"><a href="#" class="link-footer">Контакты</a></p>
+                <p class="mb-2"><a href="{% link_holder 'ABOUT' %}#page-top" class="link-footer">{% title_holder 'ABOUT' %}</a></p>
+                {% for service in all_services %}
+                <p class="mb-2"><a href="{% url 'service' service.pk %}#page-top" class="link-footer">{{ service.title }}</a></p>
+                {% endfor %}
+                <p class="mb-2"><a href="{% url 'documents' %}#page-top" class="link-footer">Документация</a></p>
+                <p class="mb-2"><a href="{% url 'contact' %}#page-top" class="link-footer">Контакты</a></p>
             </div>
             <div class="col-xl-4 d-none d-xl-block">
                 <form>
@@ -169,13 +170,12 @@
                 </form>
             </div>
             <div class="col-sm-5 col-xl text-right">
-                <p class="font-text-demi text-white text-size-20 mb-1">+7 (4212) 934-305</p>
-                <p class="font-text-demi text-white text-size-20 mb-3">+7 (924) 217-13-05</p>
-                <p class="mail-footer font-text-thin mb-0 mb-md-1">naks-habarovsk@mail.ru</p>
-                <p class="mail-footer font-text-thin mb-3">naks.habarovsk@gmail.com</p>
-                <p class="font-text-thin footer-text-small mb-2">Хабаровский край, город Хабаровск, переулок
-                    Бородинский, дом 1, 1 этаж.</p>
-                <p class="footer-text-small mb-4"><a href="https://yandex.ru/maps/-/CBBC7Pa12C" target="_blank">Адрес
+                <p class="font-text-demi text-white text-size-20 mb-1">{{ profile.org_main_phone }}</p>
+                <p class="font-text-demi text-white text-size-20 mb-3">{{ profile.org_secondary_phone}}</p>
+                <p class="mail-footer font-text-thin mb-0 mb-md-1">{{ profile.org_email}}</p>
+
+                <p class="font-text-thin footer-text-small mb-2">{{ profile.org_address }}</p>
+                <p class="footer-text-small mb-4"><a href="{% url 'contact' %}#map" target="_blank">Адрес
                         на карте</a></p>
                 <button class="btn btn-outline-white btn-sm" data-toggle="modal" data-target="#modal-statement">Оставить
                     заявку</button>
@@ -189,10 +189,10 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-sm-5 col-lg-4">
-                <p class="mb-0">ООО АЦ «НАКС Хабаровск» © 2011-2018</p>
+                <p class="mb-0">{{ profile.org_short_name }} © 2011-2019</p>
             </div>
             <div class="col-9 col-sm-5 col-lg-3">
-                <a href="#" target="_blank">Политика конфидициальности</a>
+                <a href="{% link_holder 'CONFID_POLITIK' %}" target="_blank">{% title_holder 'CONFID_POLITIK' %}</a>
             </div>
             <div class="col-3 col-sm-2 col-lg-5 text-right">
                 <span class="mr-3 d-none d-lg-inline-block">Разработано в НАКС Медиа</span><a href="http://naks.ru/naksmedia/"
