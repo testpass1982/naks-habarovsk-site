@@ -32,8 +32,10 @@ urlpatterns = [
     path('create/<slug:content_type>', mainapp.create_factory, name='create'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('messages/', mainapp.messages, name='messages'),
-    path('services/', mainapp.services, name="services"),
+    path('service/<slug:pk>', mainapp.services, name="service"),
     path('reestrsp/', mainapp.reestrsp, name='reestrsp'),
+    path('import_profile/', mainapp.import_profile, name='import_proflie'),
+
 
 ]
 

@@ -25,7 +25,7 @@ SECRET_KEY = '6a&a5bab2j3&f24if0=vnik0g)+18k99a+q27y2jfk$h%^onyd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['naks-habarovsk.minml.ru']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -66,7 +66,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'mainapp.context_processors.menu_urls',
+                # 'mainapp.context_processors.menu_urls',
+                'mainapp.context_processors.profile_chunks',
+                'mainapp.context_processors.profile_import',
+                'mainapp.context_processors.services',
+                'mainapp.context_processors.basement_news',
+                'mainapp.context_processors.documents',
+                'mainapp.context_processors.attestats',
             ],
         },
     },
@@ -133,7 +139,7 @@ SASS_OUTPUT_STYLE = 'compact'
 SASS_PRECISION = 8
 SASS_ROOT = os.path.join(BASE_DIR, 'assets')
 SASS_PROCESSOR_ROOT = SASS_ROOT
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),

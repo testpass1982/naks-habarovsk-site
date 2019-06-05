@@ -2,7 +2,7 @@ from django import forms
 from django.core.validators import FileExtensionValidator, validate_email
 import os
 
-from .models import Post, Article, Document
+from .models import Post, Article, Document, Menu, Profile
 
 
 class ContentForm(forms.ModelForm):
@@ -98,6 +98,10 @@ class SearchRegistryForm(forms.Form):
         attrs={'class': 'form__subject__search'}))
     work_place = forms.CharField(max_length=64, required=False, widget=forms.TextInput(
         attrs={'class': 'form__subject__search'}))
+
+class ProfileImportForm(forms.Form):
+    """form for profile import file"""
+    file = forms.FileField(allow_empty_file=True, required=False)
 
     # def clean(self):
     #     document = self.cleaned_data.get('document', None)

@@ -1,0 +1,14 @@
+        {% for category in document_categories %}
+        <div class="col-sm">
+            <div class="mb-3 mb-sm-0">
+            <p class="text-size-14 mb-2 mb-sm-3">{{ category.name }}</p>
+
+            {% for document in documents %}
+                {% if document.category == category %}
+                <p class="mb-1"><a href="{{ document.document.url }}" download="">{{ document.title }}</a></p>
+                {% endif %}
+            {% endfor %}
+
+            </div>
+        </div>
+        {% endfor %}

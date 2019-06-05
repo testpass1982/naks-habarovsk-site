@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %}{% load link_holders %}
 <div class="d-block d-sm-none">
     <!-- Header for Mobil -->
     <div class="main-mobil bg-white w-100 d-flex d-sm-none">
@@ -23,7 +23,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link py-3 py-sm-2" href="{% url 'about' %}#page-top">О&nbsp;Центре</a>
+                            <a class="nav-link py-3 py-sm-2" href="{% link_holder 'ABOUT' %}#page-top">{% title_holder 'ABOUT' %}</a>
                         </li>
                         <!-- <li class="nav-item">
                                 <a class="nav-link py-3 py-sm-2" href="about_center.html">Услуги</a>
@@ -76,14 +76,9 @@
     <div class="header-info-mobil mb-5">
         <div class="img-overlay">
             <div class="container py-5">
-                <h3 class="mb-4">АЦ НАКС Хабаровск</h3>
-                <p class="text-size-14 mb-3">Проводим аттестацию специалистов сварочного производства,
-                    в соответствии с ПБ-03-273-99, РД 03-495-02, аттестации сварочного оборудования и сварочных
-                    технологий, в соответствии с РД 03-614-03
-                    и РД 03-615-03</p>
-                <p class="text-size-14 mb-4">Область аккредитации Центра охватывает все объекты и группы опасных
-                    технических устройств, подконтрольные Ростехнадзору, все виды сварочного оборудования и способы
-                    сварки, включая наплавку, пайку и термическую резку</p>
+                <h3 class="mb-4">{{ profile.org_short_name }}</h3>
+                <p class="text-size-14 mb-3">{{ profile.org_intro }}</p>
+                <p class="text-size-14 mb-4"></p>
 
                 <hr class="bg-white">
                 <a href="/detailview/post/6#page-top" class="d-block text-white py-2">Профстандарты в области сварки →</a>
@@ -93,8 +88,7 @@
                     <div class="col-sm-5">
                         <div class="row align-items-center">
                             <div class="col-sm-5">
-                                <a href="{% url 'about' %}#page-top" class="btn btn-outline-white btn-block py-2">Подробнее
-                                    →</a>
+                                <a href="{% link_holder 'ABOUT' %}#page-top" class="btn btn-outline-white btn-block py-2">{% title_holder 'ABOUT' %}</a>
                             </div>
 
                             <div class="col-sm-1 text-center my-2 my-sm-0">или</div>

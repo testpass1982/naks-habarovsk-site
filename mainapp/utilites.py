@@ -37,3 +37,26 @@ class UrlMaker:
 
     def urls_dict(self):
         return {'next_url': self.next_url, 'prev_url': self.prev_url}
+
+#*** import fields ***
+from django.db.models.fields.related import ForeignObjectRel, RelatedField
+#*** import end ***
+
+def is_simple_editable_field(field):
+    return (
+            field.editable
+            and not field.primary_key
+            and not isinstance(field, (ForeignObjectRel, RelatedField))
+    )
+
+def update_from_dict(instance, attrs):
+    allowed_field_names = {
+        f.name for f in instance._meta.get_fields()
+        if is_simple_editable_field(f)
+    }
+
+    for attr, val in attrs.items():
+        if attr in allowed_field_names:
+            setattr(instance, attr, val)
+
+    instance.save()

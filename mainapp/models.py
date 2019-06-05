@@ -50,6 +50,7 @@ class Category(models.Model):
 class ContentMixin(models.Model):
     '''base class for Post, Article and Documents'''
     title = models.CharField(u'Название', max_length=200)
+    url_code = models.CharField(u'Код ссылки', max_length=30, blank=True, default='НЕ УКАЗАН')
     short_description = models.CharField(
         u'Краткое описание', max_length=200, blank=True)
     tags = models.ManyToManyField(Tag, verbose_name='Тэги')
@@ -65,6 +66,17 @@ class ContentMixin(models.Model):
     class Meta:
         abstract = True
 
+class SidePanel(models.Model):
+    title = models.CharField(u'Название', max_length=200)
+    text = RichTextUploadingField(verbose_name='Текст')
+
+    class Meta:
+        verbose_name = 'Боковая панель'
+        verbose_name_plural = 'Боковые панели'
+
+    def __str__(self):
+        return self.title
+
 
 class Post(ContentMixin):
     '''child of contentmixin'''
@@ -72,8 +84,9 @@ class Post(ContentMixin):
         Category, verbose_name='Категория', on_delete=models.CASCADE)
     publish_on_news_page = models.BooleanField(
         verbose_name="Опубликовать в ленте новостей", default=False)
-    secondery_main = models.BooleanField(
-        verbose_name="Опубликовать на главной как новость без картинки", default=False)
+    publish_in_basement=models.BooleanField(u'Опубликовать в подвале на главной', default=False)
+    side_panel = models.ForeignKey(SidePanel, verbose_name='Боковая панель', blank=True,
+                                    null=True, default=None, on_delete=models.SET_NULL)
 
     class Meta:
         ordering = ['created_date']
@@ -111,8 +124,23 @@ class Article(ContentMixin):
     def __str__(self):
         return self.title
 
+class DocumentCategory(models.Model):
+    name = models.CharField(u'Название категории', max_length=64)
+    number = models.SmallIntegerField(verbose_name='Порядок сортировки',
+                                    null=True, blank=True, default=None)
+
+    class Meta:
+        verbose_name = "Категория документа"
+        verbose_name_plural = "Категории документов"
+
+    def __str__(self):
+        return self.name
 
 class Document(models.Model):
+    """"
+    эта модель используется для
+    загрузки документов в базу данных
+    """
     title = models.CharField(u'Название', max_length=500)
     document = models.FileField(verbose_name='Документ',
                                 upload_to="documents/",
@@ -121,9 +149,21 @@ class Document(models.Model):
                                         'pdf', 'docx', 'doc', 'jpg', 'jpeg'],
                                     message="Неправильный тип файла, используйте\
                                         PDF, DOCX, DOC, JPG, JPEG")])
+
+    category = models.ForeignKey(DocumentCategory, blank=True, null=True, on_delete=models.SET_NULL)
+    url_code = models.CharField(u'Код ссылки', max_length=30, blank=True, default='НЕ УКАЗАН')
     uploaded_at = models.DateTimeField(
         verbose_name='Загружен', default=timezone.now)
-    tags = models.ManyToManyField(Tag, verbose_name='Тэги', blank=True)
+    tags = models.ManyToManyField(Tag, verbose_name='Тэги', blank=True, help_text="""
+                        Для отображения документов в разделе ССР3ГАЦ используйте тег 'ССР3ГАЦ'<br>
+                        Для отображения документов в разделе ССР3ЦСП используйте тег 'ССР3ЦСП'<br>
+                        Для отображения документов в разделе АЦСМ46 используйте тег 'АЦСМ46'<br>
+                        Для отображения документов в разделе АЦСО82 используйте тег 'АЦСО82'<br>
+                        Для отображения документов в разделе 'АЦСТ90' используйте тег 'АЦСТ90'<br>
+                        Для отображения документов в разделе ЦОК012 используйте тег 'ЦОК012'<br>
+                        Для отображения документов в на странице ЦОК используйте тег 'НПА СПКС'<br>
+                        Для отображения документов в на странице ЦОК используйте тег 'Образцы документов СПКС'<br>
+                           """)
     created_date = models.DateTimeField(
         default=timezone.now, verbose_name='Дата создания')
     post = models.ForeignKey(Post, verbose_name='Страница',
@@ -139,6 +179,10 @@ class Document(models.Model):
 
     def __str__(self):
         return self.title
+
+    def extension(self):
+        name, extension = os.path.splitext(self.document.name)
+        return extension
 
 
 def upload_to(instance, filename):
@@ -236,24 +280,17 @@ class Staff(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.name, self.job)
 
+
+
 class Menu(models.Model):
     """linking main page UI elements with its description"""
-    LINK_CHOICES = (
-        ('ATTSP', 'Аттестация специалистов сварочного производства'),
-        ('ATTSV', 'Аттестация сварщиков'),
-        ('ATTSO', 'Аттестация сварочного оборудования'),
-        ('ATTST', 'Аттестация технологий сварки'),
-        ('ATTAP2', 'Аттестация в АП2'),
-        ('OKSV', 'Оценка квалификаций'),
-    )
-    menu_link = models.CharField(max_length=100, choices=LINK_CHOICES, default='NONE')
-    title = models.CharField(u'Заголовок меню', max_length=60)
+    url_code = models.CharField(u'Код ссылки', max_length=30)
+    title = models.CharField(u'Заголовок ссылки', max_length=60)
     url = models.CharField(u'Адрес ссылки', max_length=200, default="НЕТ")
-    order = models.SmallIntegerField(u'Порядок вывода')
 
     class Meta:
-        verbose_name = "Ссылка меню"
-        verbose_name_plural = "Ссылки меню"
+        verbose_name = "Ссылка"
+        verbose_name_plural = "Ссылки"
 
     def __str__(self):
         return self.title
@@ -285,3 +322,194 @@ class WeldData(models.Model):
 
     class Meta:
         abstract = True
+
+class Service(models.Model):
+    """class for service template"""
+    title = models.CharField(
+        u'Название услуги', max_length=64, help_text="""
+            При добавлении услуги в этот раздел автоматически
+            будет создан пункт меню в разделе "Услуги", в котором они
+            сортируются в соответствии с порядком сортировки
+        """)
+    html = RichTextUploadingField(u'Описание услуги')
+    number = models.SmallIntegerField(u'Порядок сортировки', blank=True, null=True, default=None)
+    side_panel = models.ForeignKey(SidePanel, verbose_name="Боковая панель", blank=True, null=True, default=None, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Услуга'
+        verbose_name_plural = 'Услуги'
+
+    def __str__(self):
+        return self.title
+
+class Profile(models.Model):
+    """class for templating organization"""
+    org_logotype = models.ImageField(u'Логотип организации', upload_to='upload/', blank=True, null=True, default=None)
+    org_short_name = models.CharField(u'Краткое название организации', max_length=100, blank=True, null=True, default=None)
+    org_full_name = models.CharField(u'Полное название организации', max_length=300, blank=True, null=True, default=None)
+    org_intro = models.TextField(u'Текст для главной страницы', blank=True, null=True, default=None)
+    org_history = models.TextField(u'История организаици', blank=True, null=True, default=None)
+    # phone1 for header
+    org_main_phone = models.CharField(u'Главный телефон организации (используется в хедере)', max_length=30, blank=True, null=True, default=None)
+    org_main_phone_text = models.CharField(u'Подпись под телефоном в хедере, например "Многоканальный"', max_length=30, blank=True, null=True, default=None)
+    # phone2 for header
+    org_secondary_phone = models.CharField(u'Второй телефон организации (используется в хедере)', max_length=30, blank=True, null=True, default=None)
+    org_secondary_phone_text = models.CharField(u'Подпись под вторым телефоном в хедере, например "Бухгалтерия"', max_length=30, blank=True, null=True, default=None)
+    org_phones = models.TextField(u'Телефоны', blank=True, null=True, default=None)
+    org_email = models.TextField(u'Адрес электронной почты', blank=True, null=True, default=None)
+    org_header_emails = models.TextField(u'Адреса электронной почты (для хедера)', blank=True, null=True, default=None)
+    org_header_phones = models.TextField(u'Телефоны (для хедера)', blank=True, null=True, default=None)
+    org_address = models.TextField(u'Адрес местоположения организации', null=True, blank=True, default=None)
+    org_address_map_link = models.URLField(u'Ссылка на карту', blank=True, null=True, default=None)
+    org_csp_code = models.CharField(u'шифр ЦСП (необязательно)', max_length=20, null=True, blank=True)
+    org_csp_reestr_link = models.URLField(u'Ссылка на реестр ЦСП', blank=True, null=True)
+    org_acsp_code = models.CharField(u'шифр АЦСП (необязательно)', max_length=20, null=True, blank=True)
+    org_acsp_reestr_link = models.URLField(u'Ссылка на реестр АЦСП', blank=True, null=True)
+    org_acsm_code = models.CharField(u'шифр АЦСМ (необязательно)', max_length=20, null=True, blank=True)
+    org_acsm_reestr_link = models.URLField(u'Ссылка на реестр АЦСМ', blank=True, null=True)
+    org_acso_code = models.CharField(u'шифр АЦСО (необязательно)', max_length=20, null=True, blank=True)
+    org_acso_reestr_link = models.URLField(u'Ссылка на реестр АЦСО', blank=True, null=True)
+    org_acst_code = models.CharField(u'шифр АЦСТ (необязательно)', max_length=20, null=True, blank=True)
+    org_acst_reestr_link = models.URLField(u'Ссылка на реестр АЦСТ', blank=True, null=True)
+    org_cok_code = models.CharField(u'шифр ЦОК (необязательно)', max_length=20, null=True, blank=True)
+    org_cok_reestr_link = models.URLField(u'Ссылка на реестр ЦОК', blank=True, null=True)
+    number = models.SmallIntegerField(u'Порядок сортировки', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Профиль организации'
+        verbose_name_plural = 'Профили организации'
+
+    def __str__(self):
+        return self.org_short_name
+
+class Profstandard(models.Model):
+    title = models.CharField(u'Название профстандарта', max_length=200)
+    info = models.CharField(u'Информация о стандарте(код)', max_length=300)
+    reg_number = models.CharField(u'Регистрационный номер', max_length=20)
+    mintrud_prikaz = models.CharField(u'Приказ минтруда', max_length=100)
+    document = models.FileField(u'Файл', upload_to='upload/')
+    number = models.SmallIntegerField(u'Порядок сортировки')
+
+    class Meta:
+        verbose_name = 'Профстандарт'
+        verbose_name_plural = 'Профстандарты'
+
+    def __str__(self):
+        return self.title
+
+class Attestat(models.Model):
+    title = models.CharField(u'Название аттестата(сертификата)', max_length=60)
+    image = models.ImageField(u'Скан аттестата', upload_to="upload/")
+    number = models.SmallIntegerField(u'Порядок сортировки')
+
+    class Meta:
+        verbose_name = 'Аттестат соответствия'
+        verbose_name_plural = 'Аттестаты соответствия'
+
+    def __str__(self):
+        return self.title
+
+class Chunk(models.Model):
+    """class for making html chunks on pages"""
+    title = models.CharField(u'Название вставки', max_length=64)
+    code = models.CharField(u'Уникальный код вставки', max_length=64, default='КОД_ВСТАВКИ')
+    html = RichTextUploadingField(u'Форматирование вставки')
+
+    class Meta:
+        verbose_name = 'Вставка'
+        verbose_name_plural = 'Вставки'
+
+    def __str__(self):
+        return self.title
+
+class CenterPhotos(models.Model):
+    title = models.CharField(u'Название фотографии', max_length=60)
+    image = models.ImageField(u'Файл', upload_to="upload/")
+    number = models.SmallIntegerField(u'Порядок сортировки', blank=True)
+
+    class Meta:
+        verbose_name = 'Фотография центра'
+        verbose_name_plural = 'Фотографии центра'
+
+    def __str__(self):
+        return self.title
+
+
+
+class SiteConfiguration(models.Model):
+
+    """class for configuration of site"""
+    SITE_TYPES = (
+        ('1', 'site_type1'),
+        ('2', 'site_type2'),
+        ('3', 'site_type3'),
+    )
+
+    site_type = models.CharField(
+        u'Тип сайта', max_length=1,
+        choices=SITE_TYPES, blank=True, default=None
+    )
+
+    color_set = models.CharField(
+        u'Цветовая схема (через запятую)',
+        max_length=50, null=True,
+        blank=True,
+        default=None
+    )
+
+    class Meta:
+        verbose_name = 'Конфигурация сайта'
+        verbose_name_plural = 'Конфигурации сайта'
+
+    def __str__(self):
+        return self.title
+
+class Component(models.Model):
+    COMPONENT_TYPE_CHOICES = (
+        ('top_addr_line', 'Верхняя линия с адресом'),
+        ('main_menu', 'Главное меню сайта'),
+        ('secondary_menu', 'Второстепенное меню'),
+        ('main_banner', 'Главный баннер'),
+        ('pict_gallery', 'Галерея фотографий'),
+        ('text_block', 'Текстовы блок'),
+        ('contact_block', 'Блок с контактами'),
+        ('advertising_block', 'Блок с рекламой'),
+        ('partners_block', 'Блок с партнерами'),
+        ('footer', 'Футер')
+    )
+    title = models.CharField(u'Название компонента', max_length=60)
+    code = models.CharField(u'Шифр компонента (латиницей)', max_length=60)
+
+    component_type = models.CharField(
+        u'Тип компонента(назначение)',
+        max_length=30,
+        choices=COMPONENT_TYPE_CHOICES,
+        default='не определено'
+    )
+    css = models.FileField(u'Файл стилей компонента', upload_to="components/")
+    html = models.FileField(u'Файл разметки компонента', upload_to="components/")
+    js = models.FileField(u'Файл скриптов', null=True, blank=True, default=None, upload_to="components/")
+    published = models.BooleanField(u'Опубликовать компонет', default=False)
+    number = models.SmallIntegerField(u'Порядок вывода на сайт', default=500)
+    configuration = models.ForeignKey(SiteConfiguration, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Компонент сайта'
+        verbose_name_plural = 'Компоненты сайта'
+
+    def __str__(self):
+        return self.title
+
+
+
+class Partner(models.Model):
+    title = models.CharField(u'Название партнера', max_length=60)
+    logo = models.ImageField(u'Логотип партнера', upload_to="upload/")
+    number = models.SmallIntegerField(u'Порядок вывода на сайт')
+
+    class Meta:
+        verbose_name = 'Партнер'
+        verbose_name_plural = 'Партнеры'
+
+    def __str__(self):
+        return self.title

@@ -1,2 +1,12 @@
 @import '_test.scss';
-@import '_header-logo.scss'
+@import '_header-logo.scss';
+
+.relative {
+    position: relative;
+}
+
+.top-right-absolute {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+}

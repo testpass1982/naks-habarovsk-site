@@ -8,18 +8,18 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post, PostPhoto, Tag, Category, Document, Article, Message, Contact
 from .models import Registry
 from .models import Staff
-from .forms import PostForm, ArticleForm, DocumentForm
+from .forms import PostForm, ArticleForm, DocumentForm, ProfileImportForm, Profile
 from .forms import SendMessageForm, SubscribeForm, AskQuestionForm, DocumentSearchForm, SearchRegistryForm
 from .adapters import MessageModelAdapter
 from .message_tracker import MessageTracker
-from .utilites import UrlMaker
+from .utilites import UrlMaker, update_from_dict
 from .registry_import import Importer, data_url
 # Create your views here.
 
 
 def index(request):
     """this is mainpage view with forms handler and adapter to messages"""
-    title = "Главная - НАКС Смоленск"
+    title = "Главная страница"
     tracker = MessageTracker()
     if request.method == 'POST':
         request_to_dict = dict(zip(request.POST.keys(), request.POST.values()))
@@ -34,7 +34,6 @@ def index(request):
                 form_class = form_select[key]
         form = form_class(request_to_dict)
         if form.is_valid():
-
             # saving form data to messages (need to be cleaned in future)
             adapted_data = MessageModelAdapter(request_to_dict)
             adapted_data.save_to_message()
@@ -45,16 +44,16 @@ def index(request):
             raise ValidationError('form not valid')
 
     main_page_news = Post.objects.filter(
-        publish_on_main_page=True).order_by('-published_date')[:3]
+        publish_on_main_page=True)[:3]
 
     not_pictured_posts = Post.objects.filter(
-        secondery_main=True).order_by('-published_date')[:3]
-    
+        publish_in_basement=True)[:3]
+
     main_page_documents = Document.objects.filter(
         publish_on_main_page=True).order_by('-created_date')[:3]
 
-    # main_page_secondery_news = Post.objects.filter(
-    #     secondery_main=True).order_by('-published_date')[:4]
+    main_page_secondery_news = Post.objects.filter(
+        publish_in_basement=True).order_by('-published_date')[:4]
     pictured_posts = {}
     for post in main_page_news:
         pictured_posts[post] = PostPhoto.objects.filter(post__pk=post.pk).first()
@@ -76,7 +75,7 @@ def index(request):
         'subscribe_form': SubscribeForm(),
         'ask_question_form': AskQuestionForm()
     }
-
+    # import pdb; pdb.set_trace()
     return render(request, 'mainapp/index.html', content)
 
 
@@ -140,6 +139,7 @@ def details(request, pk=None, content=None):
             'images': attached_images,
             'documents': attached_documents,
             'side_related_posts': side_related_posts,
+            'side_panel': obj.side_panel,
             'bottom_related': Article.objects.all().order_by(
                 '-created_date')[:3]
         }
@@ -155,6 +155,7 @@ def details(request, pk=None, content=None):
         }
 
     context = common_content.copy()
+    from .models import SidePanel
     context.update(post_content)
     context['return_link'] = return_link
 
@@ -303,8 +304,11 @@ def documents(request):
     return render(request, 'mainapp/documents.html', content)
 
 
-def services(request):
-    return render(request, 'mainapp/services.html')
+def services(request, pk):
+    from .models import Service
+    service = Service.objects.get(pk=pk)
+    side_panel = service.side_panel
+    return render(request, 'mainapp/services.html', {'service': service, 'side_panel': side_panel})
 
 
 def about(request):
@@ -378,3 +382,36 @@ def reestrsp(request, type=None):
         content = None
 
     return render(request, 'mainapp/reestr.html', content)
+
+def import_profile(request):
+    content = {}
+    if request.method == "POST":
+        if len(request.FILES) > 0:
+            form = ProfileImportForm(request.POST, request.FILES)
+            if form.is_valid():
+                data = request.FILES.get('file')
+                file = data.readlines()
+                import_data = {}
+                for line in file:
+                    string = line.decode('utf-8')
+                    if string.startswith('#') or string.startswith('\n'):
+                        # print('Пропускаем: ', string)
+                        continue
+                    splitted = string.split("::")
+                    import_data.update({splitted[0].strip(): splitted[1].strip()})
+                    # print('Импортируем:', string)
+                profile = Profile.objects.first()
+                if profile is None:
+                    profile = Profile.objects.create(org_short_name="DEMO")
+                try:
+                    #updating existing record with imported fields
+                    update_from_dict(profile, import_data)
+                    content.update({'profile_dict': '{}'.format(profile.__dict__)})
+                    content.update({'profile': profile})
+                    print('***imported***')
+                except Exception as e:
+                    print("***ERRORS***", e)
+                    content.update({'errors': e})
+        else:
+            content.update({'errors': 'Файл для загрузки не выбран'})
+        return render(request, 'mainapp/includes/profile_load.html', content)

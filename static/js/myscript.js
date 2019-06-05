@@ -23,64 +23,73 @@ $(document).ready(function() {
 
 // Slider
 $(document).ready(function() {
-	$("#slider-photo").owlCarousel({
-		margin:10,
-		responsiveClass:true,
-		responsive:{
-			0:{
-				items:1,
-				nav:true
-			},
-			600:{
-				items:3,
-				nav:true
-			},
-			1000:{
-				items:3,
-				nav:true,
-				loop:false
-			}
-		},
+	// $("#slider-photo").owlCarousel({
+	// 	margin:10,
+	// 	responsiveClass:true,
+	// 	responsive:{
+	// 		0:{
+	// 			items:1,
+	// 			nav:true
+	// 		},
+	// 		600:{
+	// 			items:3,
+	// 			nav:true
+	// 		},
+	// 		1000:{
+	// 			items:3,
+	// 			nav:true,
+	// 			loop:false
+	// 		}
+	// 	},
 
-		navText: [
-			'<span aria-label="' + 'Previous' + '">&larr;</span>',
-			'<span aria-label="' + 'Next' + '">&rarr;</span>'
-		],
-		// autoPlay:true,
-		nav:true,
-		autoHeight: true,
-		dots:false
-	});
+	// 	navText: [
+	// 		'<span aria-label="' + 'Previous' + '">&larr;</span>',
+	// 		'<span aria-label="' + 'Next' + '">&rarr;</span>'
+	// 	],
+	// 	// autoPlay:true,
+	// 	nav:true,
+	// 	autoHeight: true,
+	// 	dots:false
+	// });
 
-	$("#slider-text").owlCarousel({
-		margin:40,
-		responsiveClass:true,
-		responsive:{
-			0:{
-				items:1,
-				nav:true
-			},
-			600:{
-				margin:20,
-				items:3,
-				nav:true
-			},
-			1200:{
-				items:4,
-				nav:true,
-				loop:false
-			}
-		},
+	// $("#slider-text").owlCarousel({
+	// 	margin:40,
+	// 	responsiveClass:true,
+	// 	responsive:{
+	// 		0:{
+	// 			items:1,
+	// 			nav:true
+	// 		},
+	// 		600:{
+	// 			margin:20,
+	// 			items:3,
+	// 			nav:true
+	// 		},
+	// 		1200:{
+	// 			items:4,
+	// 			nav:true,
+	// 			loop:false
+	// 		}
+	// 	},
 
-		navText: [
-			'<span aria-label="' + 'Previous' + '">&larr;</span>',
-			'<span aria-label="' + 'Next' + '">&rarr;</span>'
-		],
-		// autoPlay:true,
-		nav:true,
-		// autoHeight: true,
-		dots:false
-	});
+	// 	navText: [
+	// 		'<span aria-label="' + 'Previous' + '">&larr;</span>',
+	// 		'<span aria-label="' + 'Next' + '">&rarr;</span>'
+	// 	],
+	// 	// autoPlay:true,
+	// 	nav:true,
+	// 	// autoHeight: true,
+	// 	dots:false
+	// });
+	$('#toggle_panel').click(function(event){
+		event.preventDefault();
+		$('.admin_panel').toggle();
+		if ($('.admin_panel').is(":visible")) {
+		  $('#toggle_panel').html('<i class="fas fa-arrow-up"></i>');
+		} else {
+		  $('#toggle_panel').html('<i class="fas fa-arrow-down"></i>');
+		}
+	  });
 });
 
 
