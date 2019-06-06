@@ -143,9 +143,11 @@
             </div>
             <div class="col-sm-2 col-xl">
                 <p class="mb-2"><a href="{% link_holder 'ABOUT' %}#page-top" class="link-footer">{% title_holder 'ABOUT' %}</a></p>
+                {% autoescape off %}
                 {% for service in all_services %}
                 <p class="mb-2"><a href="{% url 'service' service.pk %}#page-top" class="link-footer">{{ service.title }}</a></p>
                 {% endfor %}
+                {% endautoescape %}
                 <p class="mb-2"><a href="{% url 'documents' %}#page-top" class="link-footer">Документация</a></p>
                 <p class="mb-2"><a href="{% url 'contact' %}#page-top" class="link-footer">Контакты</a></p>
             </div>

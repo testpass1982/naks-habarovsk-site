@@ -198,9 +198,11 @@
                     <!-- Услуги центра -->
                     <div class="col-lg-7">
                         <div class="row align-items-center">
+                        {% autoescape off %}
                             {% for service in all_services %}
                                 {% include 'mainapp/includes/service_menu_button.html' %}
                             {% endfor %}
+                        {% endautoescape %}
                         </div>
                         <hr class="line-header">
                     </div><!-- Конец - Услуги центра -->
