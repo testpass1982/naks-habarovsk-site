@@ -90,12 +90,12 @@
                 <p class="mb-2"><a href="#" class="link-footer">Контакты</a></p>
             </div>
             <div class="col-7 text-right">
-                <p class="text-dark mb-2"><a href="tel:+74212934305"><strong>+7 (4212) 934-305</strong></a></p>
-                <p class="text-dark mb-2"><a href="tel:+79242171305"><strong>+7 (924) 217-13-05</strong></a></p>
-                <p class="font-text-thin text-size-12 mb-0"><a href="mailto:naks-habarovsk@mail.ru">naks-habarovsk@mail.ru</a></p>
-                <p class="font-text-thin text-size-12 mb-2"><a href="mailto:naks.habarovsk@gmail.com">naks.habarovsk@gmail.com</a></p>
-                <p class="text-darg font-text-demi footer-text-small mb-4">Хабаровский край, г. Хабаровск, пер.
-                    Бородинский, д. 1, 1 эт.</p>
+                <p class="text-dark mb-2"><a href="tel:{{ profile.org_main_phone }}"><strong>{{ profile.org_main_phone }}</strong></a></p>
+                {% if profile.secondary_phone %}
+                <p class="text-dark mb-2"><a href="tel:{{ profile.org_secondary_phone }}"><strong>{{ proflie.org_secondary_phone }}</strong></a></p>
+                {% endif %}
+                <p class="font-text-thin text-size-12 mb-0"><a href="mailto:{{ profile.org_email }}">{{ profile.org_email }}</a></p>
+                <p class="text-darg font-text-demi footer-text-small mb-4">{{ profile.org_address }}</p>
                 <button class="btn btn-outline-white btn-sm" data-toggle="modal" data-target="#modal-statement">Оставить
                     заявку</button>
             </div>

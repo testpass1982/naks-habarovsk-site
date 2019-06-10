@@ -18,7 +18,9 @@
         <div class="col-lg-7">
             <div class="row mb-4">
                 <div class="col-sm">
+                    {% autoescape off %}
                     <h4 class="mb-4">{{ service.title }}</h4>
+                    {% endautoescape %}
                 </div>
                 <div class="col-sm">
                     <div class="box-dark-blue text-white p-4">
