@@ -26,6 +26,8 @@ urlpatterns = [
     path('contact/', mainapp.contact, name='contact'),
     path('staff/', mainapp.staff, name='staff'),
     path('documents/', mainapp.documents, name='documents'),
+    path('articles/', mainapp.articles, name='articles'),
+    path('article_details/<slug:pk>', mainapp.article_details, name='article_details'),
     path('news/', mainapp.news, name='news'),
     path('detailview/<slug:content>/<slug:pk>',
          mainapp.details, name='detailview'),
@@ -35,8 +37,6 @@ urlpatterns = [
     path('service/<slug:pk>', mainapp.services, name="service"),
     path('reestrsp/', mainapp.reestrsp, name='reestrsp'),
     path('import_profile/', mainapp.import_profile, name='import_proflie'),
-
-
 ]
 
 if settings.DEBUG:

@@ -310,6 +310,19 @@ def services(request, pk):
     side_panel = service.side_panel
     return render(request, 'mainapp/services.html', {'service': service, 'side_panel': side_panel})
 
+def articles(request):
+    all_articles = Article.objects.all().order_by('published_date')
+    content = {
+        'articles': all_articles
+    }
+    return render(request, 'mainapp/articles.html', content)
+
+def article_details(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    content = {
+        'article': article
+    }
+    return render(request, 'mainapp/article_details.html', content)
 
 def about(request):
     """this is docstring"""

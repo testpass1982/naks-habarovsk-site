@@ -35,7 +35,7 @@
                             <h4 class="mb-0">Статьи</h4>
                         </div>
                         <div class="col text-right">
-                            <a href="#" class="text-dark text-size-14">Все статьи →</a>
+                            <a href="{% url 'articles' %}#page-top" class="text-dark text-size-14">Все статьи →</a>
                         </div>
                     </div>
                     {% include 'mainapp/includes/articles.html' %}
@@ -49,7 +49,7 @@
                                 <h4 class="mb-0">Документы</h4>
                             </div>
                             <div class="col-6 text-right">
-                                <a href="#" class="text-dark text-size-14">Все&nbsp;документы&nbsp;→</a>
+                                <a href="{% url 'documents' %}#page-top" class="text-dark text-size-14">Все&nbsp;документы&nbsp;→</a>
                             </div>
                         </div>
                         {% include 'mainapp/includes/documents.html' %}
