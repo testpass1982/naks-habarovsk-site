@@ -37,6 +37,8 @@ urlpatterns = [
     path('service/<slug:pk>', mainapp.services, name="service"),
     path('reestrsp/', mainapp.reestrsp, name='reestrsp'),
     path('import_profile/', mainapp.import_profile, name='import_proflie'),
+    path('accept_order/', mainapp.accept_order, name="accept_order"),
+    path('captcha/', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

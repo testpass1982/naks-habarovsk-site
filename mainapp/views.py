@@ -10,10 +10,14 @@ from .models import Registry
 from .models import Staff
 from .forms import PostForm, ArticleForm, DocumentForm, ProfileImportForm, Profile
 from .forms import SendMessageForm, SubscribeForm, AskQuestionForm, DocumentSearchForm, SearchRegistryForm
+from django.core.mail import send_mail
 from .adapters import MessageModelAdapter
 from .message_tracker import MessageTracker
 from .utilites import UrlMaker, update_from_dict
 from .registry_import import Importer, data_url
+from .forms import OrderForm
+from django.conf import settings
+
 # Create your views here.
 
 
@@ -428,3 +432,54 @@ def import_profile(request):
         else:
             content.update({'errors': 'Файл для загрузки не выбран'})
         return render(request, 'mainapp/includes/profile_load.html', content)
+
+
+def accept_order(request):
+    if request.method == 'POST':
+        # print('REQUEST POST', request.POST)
+
+        order_variants = {
+            "att_sv": "Аттестация сварщиков",
+            "att_sp_sv": "Аттестация специалистов сварочного производства",
+            "att_sm": "Аттестация сварочных материалов",
+            "att_so": "Аттестация сварочного оборудования",
+            "att_st": "Аттестация сварочных технологий",
+            "ocenka_qual": "Оценка квалификации в области сварки и контроля",
+        }
+        data = {
+            "name": request.POST.get('name'),
+            "phone": request.POST.get('phone'),
+            "captcha_1": request.POST.get('captcha_1'),
+            "captcha_0": request.POST.get('captcha_0'),
+            "order_type": order_variants[request.POST.get('order_type')]
+            }
+        form = OrderForm(data)
+        if form.is_valid():
+            instance = form.save()
+            current_absolute_url = request.build_absolute_uri()
+            email_address_arr = ['popov.anatoly@gmail.com']
+
+            if '8000' not in current_absolute_url:
+                if Profile.objects.first() is not None:
+                    admin_email_address = Profile.objects.first().org_order_email.split(" ")
+                else:
+                    admin_email_address = 'popov@naks.ru'
+                email_address_arr += admin_email_address
+            # 4seconds economy to send_email every time i make tests
+            if not instance.name == 'tolik_make_tests':
+                send_mail(
+                    'Заполнена заявка на сайте',
+    """
+    Заполнена заявка на сайте {url}
+    Имя: {name}, Телефон: {phone},
+    Заявлено: {order_string}
+    """.format(url=current_absolute_url,
+               name=instance.name,
+               phone=instance.phone,
+               order_string=data['order_type']),
+                    settings.EMAIL_HOST_USER,
+                    email_address_arr
+                )
+            return JsonResponse({'message': 'ok', 'order_id': instance.pk})
+        else:
+            return JsonResponse({'errors': form.errors})

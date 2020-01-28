@@ -5,6 +5,8 @@ import random
 from django.template import Context, Template
 from django.shortcuts import render, get_object_or_404
 from .models import DocumentCategory
+from .forms import OrderForm
+from .models import Attestat
 
 class SiteComponent:
     def __init__(self, html, contxt, css_file):
@@ -58,6 +60,10 @@ def documents(request):
 'documents': Document.objects.all().order_by('-created_date')
 }
 
-from .models import Attestat
 def attestats(request):
     return {'attestats': Attestat.objects.all().order_by('number')}
+
+
+def order_form(request):
+    order_form = OrderForm()
+    return {'order_form': order_form}

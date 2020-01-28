@@ -16,32 +16,35 @@
                     </button>
                 </div>
             </div>
-            
-            <form>
+
+            <form id="order_form">
+                {% csrf_token %}
                 <div class="modal-body px-3 px-sm-5">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="" class="col-form-label col-form-label-sm">Имя</label>
-                                <input type="text" class="form-control form-control-sm" id="" required="">
+                                <label for="id_name" class="col-form-label col-form-label-sm">Имя</label>
+                                {% comment %} <input type="text" class="form-control form-control-sm" id="" required=""> {% endcomment %}
+                                {{ order_form.name }}
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="" class="col-form-label col-form-label-sm">Номер телефона</label>
-                                <input type="text" class="form-control form-control-sm" id="" required="">
+                                <label for="id_phone" class="col-form-label col-form-label-sm">Номер телефона</label>
+                                {% comment %} <input type="text" class="form-control form-control-sm" id="" required=""> {% endcomment %}
+                                {{ order_form.phone }}
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group ">
                                 <label for="" class="col-form-label col-form-label-sm">Вид заявки</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Аттестация сварщиков</option>
-                                    <option>Аттестация специалистов сварочного производства</option>
-                                    <option>Аттестация сварочного оборудования</option>
-                                    <option>Аттестация сварочных материалов</option>
-                                    <option>Аттестация сварочных технологий</option>
-                                    <option>Оценка квалификации</option>
+                                <select name="order_type" class="form-control form-control-sm">
+                                    <option value="att_sv">Аттестация сварщиков</option>
+                                    <option value="att_sp_sv">Аттестация специалистов сварочного производства</option>
+                                    <option value="att_sm">Аттестация сварочного оборудования</option>
+                                    <option value="att_so">Аттестация сварочных материалов</option>
+                                    <option value="att_st">Аттестация сварочных технологий</option>
+                                    <option value="ocenka_qual">Оценка квалификации в области сварки и контроля</option>
                                 </select>
                             </div>
                         </div>
@@ -51,9 +54,13 @@
                         <input type="checkbox" class="custom-control-input" id="soglasie" required="">
                         <label class="custom-control-label text-white" for="soglasie"><small>Я даю <a href="#" class="text-white" target="_blank">согласие на обработку персональных данных</a></small></label>
                     </div>
+                    <div id="order_captcha_check">
+                        {{ order_form.captcha }}
+                        <div id="order_captcha_message"></div>
+                    </div>
                 </div>
                 <div class="modal-footer pb-5 px-3 px-sm-5">
-                    <button type="submit" class="btn btn-blue">Отправить заявку</button>
+                    <button id="order_service_button" type="submit" class="btn btn-blue">Отправить заявку</button>
                 </div>
             </form>
         </div>
