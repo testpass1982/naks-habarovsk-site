@@ -22,6 +22,8 @@
 	--dark: #343a40;
 }
 
+$primary-blue: #00467F;
+
 body {
 	font-family: "Avenir Next Cyr Regular", sans-serif;
 	line-height: 24px;
@@ -31,9 +33,9 @@ body {
 }
 
 /* Change Bootstrap */
-.btn, 
-.form-control, 
-.alert, 
+.btn,
+.form-control,
+.alert,
 .dropdown-menu,
 .card {
 	border-radius: 0.2rem;
@@ -179,8 +181,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Header */
 .header-addr {
 	font-size: 0.8rem;
-	color: #89929D;
-	background-color: #363a3f;
+	color: white;
+	background-color: $primary-blue;
 }
 
 .header-addr a {
@@ -201,13 +203,13 @@ h1, h2, h3, h4, h5, h6 {
 .btn-blue {
 	font-size: 0.875rem;
 	color: #fff;
-	background-color: #5ba4dd;
-	border-color: #5ba4dd;
+	background-color: #00467F;
+	border-color: #00467F;
 }
 .btn-blue:hover {
 	color: #fff;
-	background-color: #0D9BFF;
-	border-color: #0D9BFF;
+	background-color: rgba($primary-blue, 0.7);
+	border-color: rgba($primary-blue, 0.7);
 }
 
 
@@ -218,8 +220,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-outline-blue:hover {
 	color: #fff;
-	background-color: #5ba4dd;
-	border-color: #5ba4dd;
+	background-color: #00467F;
+	border-color: #00467F;
 }
 
 .main .nav-link {
@@ -246,7 +248,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .img-overlay {
-	background-color: rgba(54, 58, 63, 0.85);
+	//rgb(85, 147, 199)
+	background-color: rgba($primary-blue, 0.7);
 }
 .header-info {
 	background: url("../images/bcg-head.png") no-repeat;
@@ -684,7 +687,7 @@ h1, h2, h3, h4, h5, h6 {
 		border: 1px solid #e8e8e8;
 
 		&:hover {
-			background-color: #fff;	
+			background-color: #fff;
 		}
 
 		.dropdown-menu {
@@ -708,7 +711,7 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 
-	
+
 
 	.btn-outline-gray {
 		border: 1px solid #e8e8e8;
@@ -731,27 +734,27 @@ h1, h2, h3, h4, h5, h6 {
     background: #d6d6d6;
     display: inline-block;
     cursor: pointer;
-    border-radius: 3px; 
+    border-radius: 3px;
     border: 1px solid #e8e8e8;
 
     &:hover {
 	    background: #869791;
 	    color: #FFF;
-	    text-decoration: none; 
+	    text-decoration: none;
 	}
 }
 
 .owl-theme .owl-nav {
     margin-top: 1.5rem;
     text-align: left;
-    -webkit-tap-highlight-color: transparent; 
+    -webkit-tap-highlight-color: transparent;
 
     .disabled {
 	    opacity: 0.5;
-	    cursor: default; 
+	    cursor: default;
 	}
 }
- .owl-carousel .owl-nav button.owl-prev, 
+ .owl-carousel .owl-nav button.owl-prev,
  .owl-carousel .owl-nav button.owl-next {
     background: none;
     color: gray;
